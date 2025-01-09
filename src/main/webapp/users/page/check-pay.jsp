@@ -164,10 +164,10 @@
             </div>
 
             <h2><i>${message}</i></h2>
-            <p>${message == 'Thanh toán thất bại' ? 'Đơn hàng của bạn đã bị thất bại. Vui lòng thử lại.' : 'Đơn hàng của bạn đã được xác nhận và đang được xử lý.'}</p>
+            <p>${message == 'Thanh toán thất bại' ? 'Đặt vé thất bại' : 'Đã đăt vé thành công.'}</p>
 
             <div class="next-steps">
-                <p>Bạn sẽ nhận được email xác nhận với thông tin chi tiết về đơn hàng của mình.</p>
+                <p>Bạn sẽ nhận được email xác nhận với thông tin chi tiết về thông tin đặt phim.</p>
                 <p>Nếu bạn có thắc mắc, vui lòng liên hệ với chúng tôi qua:</p>
                 <p>Email: votuan@gmail.com | Số điện thoại: 0909 999 999</p>
             </div>

@@ -10,44 +10,11 @@
     <title>Vật Liệu Xây Dựng TQH </title>
 </head>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4-beta3/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4-beta3/css/all.min.css" />
 <link rel="stylesheet" href="<c:url value="/users/css/home.css"/>">
-<link rel="stylesheet" href="<c:url value="/users/css/confirmation.css"/>">
-<style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+<link rel="stylesheet" href="<c:url value="/users/css/reservation.css"/>">
 
-    td {
-        padding: 10px;
-        text-align: center;
-    }
-
-    .image-product {
-        width: 100px; /* Điều chỉnh kích thước ảnh nếu cần */
-        height: auto;
-    }
-
-    .save {
-        padding: 4px 20px;
-        margin-top: 10px;
-        background-color: #1c293d;
-        border-radius: 5px;
-        border: none;
-        color: #ffffff;
-        cursor: pointer;
-    }
-
-    .save:hover {
-        background-color: #24a220;
-    }
-
-    .sub .p:hover {
-        color: #f12020;
-    }
-</style>
 <body>
 <div id="section-header1">
     <div class="container">
@@ -58,9 +25,9 @@
                 </p>
             </div>
             <div class="top-right">
-          <span id="user-greeting" style="display: none; color: #ffffff;">
+                    <span id="user-greeting" style="display: none; color: #ffffff;">
                            Xin chào,  <span
-                  id="username">${sessionScope.user.username != null ? sessionScope.user.username : ''}</span>!</span>
+                            id="username">${sessionScope.user.username != null ? sessionScope.user.username : ''}</span>!</span>
 
                 <form action="informationCustomer" method="get">
                     <button type="submit" class="account-link" id="signup-link"
@@ -69,7 +36,7 @@
                     </button>
                 </form>
                 <form action="login" method="post">
-                    <input name="action" type="hidden" value="login"/>
+                    <input name="action" type="hidden" value="login" />
                     <button type="submit" id="login-link">
                         <span><i class="fa fa-fw fa-user"></i> Đăng Nhập</span>
                     </button>
@@ -157,13 +124,12 @@
                             ĐIỆN NƯỚC</a></li>
                     </ul>
                 </li>
-                <li class="propClone"><a href="home-page"><i class="fa-solid fa-house"></i>&nbsp;&nbsp; TRANG
-                    CHỦ
+                <li class="propClone"><a href="home-page"><i class="fa-solid fa-house"></i>&nbsp;&nbsp; TRANG CHỦ
                 </a></li>
                 <li class="propClone"><a href="product"><i class="fa-brands fa-product-hunt"></i>
                     &nbsp;&nbsp;SẢN PHẨM</a>
                 </li>
-                <li class="propClone"><a href="cart-items"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp; GIỎ
+                <li class="propClone"> <a href="cart-items"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp; GIỎ
                     HÀNG</a>
                 </li>
                 <li class="propClone">
@@ -190,49 +156,35 @@
 </div>
 
 <div id="section-content-1">
+    <div class="reservation-container">
+        <h1>Đặt chỗ</h1>
 
-    <h2>Thông Tin Đặt Phim</h2>
+        <!-- Form để chọn số ghế -->
+        <form action="submitReservation" method="post">
+            <input type="hidden" name="roomId" value="${roomId}">
+            <input type="hidden" name="timeSlotId" value="${timeSlotId}">
 
-    <!-- Tên Phim -->
-    <div class="form-group">
-        <label for="movie-name">Tên Phim</label>
-        <input type="text" id="movie-name" name="movie-name" value="${movie.title}" disabled>
+            <label for="customerName">Họ và tên:</label>
+            <input type="text" id="customerName" name="customerName" required>
+
+            <label for="customerPhone">Số điện thoại:</label>
+            <input type="text" id="customerPhone" name="customerPhone" required>
+
+            <label for="seats">Chọn ghế:</label>
+
+            <div id="seats-selection">
+                <c:forEach var="seat" begin="1" end="20">
+                    <button type="button" name="seats" value="${seat}" onclick="selectSeat(${seat})">Ghế ${seat}</button>
+                </c:forEach>
+            </div>
+
+            <!-- Thể hiện ghế đã chọn -->
+            <input type="hidden" id="seats" name="seats">
+            <input type="hidden" id="total" name="startTime" value="${startTime}">
+            <button type="submit">Đặt chỗ</button>
+        </form>
     </div>
-
-    <!-- Số Ghế -->
-    <div class="form-group">
-        <label for="seat-number">Số Ghế</label>
-        <input type="text" id="seat-number" name="seat-number" value="${seats}" disabled>
-    </div>
-
-    <!-- Giờ Chiếu -->
-    <div class="form-group">
-        <label for="showtime">Giờ Chiếu</label>
-        <input type="text" id="showtime" name="showtime" value="${startTime}" disabled>
-    </div>
-
-    <!-- Phòng Chiếu -->
-    <div class="form-group">
-        <label for="room">Phòng Chiếu</label>
-        <input type="text" id="room" name="room"  value="${room.name}" disabled>
-    </div>
-
-    <form action="payVNPAY" method="post">
-        <!-- Giá Vé -->
-        <div class="form-group">
-            <label for="ticket-price">Giá Vé</label>
-            <input type="text" id="ticket-price" name="ticket-price"
-                   value="<fmt:formatNumber value='${movie.ticketPrice}' type='number' /> VNĐ" readonly>
-            <input type="hidden" name="actual-ticket-price" value="${movie.ticketPrice}">
-        </div>
-
-        <!-- Thanh Toán VNPay -->
-        <div class="form-group">
-            <button type="submit" class="btn">Thanh Toán với VNPay</button>
-        </div>
-    </form>
 </div>
-
 
 <div id="section-footer">
     <div class="container">
@@ -253,12 +205,12 @@
         <div class="social-media">
             <h3>Mạng xã hội</h3>
             <ul>
-                <li><a href="https://www.facebook.com/profile.php?id=100044411504061"><i
+                <li> <a href="https://www.facebook.com/profile.php?id=100044411504061"><i
                         class="fa-brands fa-facebook" style="color: #d1d1d1;"></i></a></li>
-                <li><a href="https://www.instagram.com/paq.2012/"><i class="fa-brands fa-instagram-square"
-                                                                     style="color: #d1d1d1;"></i></a></li>
-                <li><a href="https://x.com/?lang=vi"><i class="fa-brands fa-twitter"
-                                                        style="color: #d1d1d1;"></i></a></li>
+                <li> <a href="https://www.instagram.com/paq.2012/"><i class="fa-brands fa-instagram-square"
+                                                                      style="color: #d1d1d1;"></i></a></li>
+                <li> <a href="https://x.com/?lang=vi"><i class="fa-brands fa-twitter"
+                                                         style="color: #d1d1d1;"></i></a></li>
             </ul>
         </div>
         <div class="copyright">
@@ -267,28 +219,30 @@
     </div>
     <div>
         <li style="list-style-type: none;"><a href="https://zaloweb.me/" target="_blank" rel="noopener"><i
-                class="fa-solid fa-phone call" style="color: rgb(62, 159, 62);"></i></a></li>
+                class="fa-solid fa-phone call" style="color: #02bc15d1;"></i></a></li>
     </div>
     <div>
-        <li style="list-style-type: none;"><a href="https://www.instagram.com/paq.2012/" target="_blank"
-                                              rel="noopener"><i
+        <li style="list-style-type: none;"><a href="https://www.instagram.com/paq.2012/" target="_blank" rel="noopener"><i
                 class="fab fa-instagram icon" style="color: #f12020;"></i></a></li>
     </div>
     <div id="fb">
         <li style="list-style-type: none;"><a href="https://www.facebook.com/profile.php?id=100044411504061"
-                                              target="_blank" rel="noopener"><i
-                class="fa-brands fa-facebook-square icon"
-                style="color: #0911ff;"></i></a></li>
+                                              target="_blank" rel="noopener"><i class="fa-brands fa-facebook-square icon" style="color: #0911ff;"></i></a></li>
     </div>
     <button id="backToTop" title="Quay về đầu trang">⬆</button>
 
 </div>
 
-
-<script src="<c:url value="/users/js/comfirmation.js"/>"></script>
 <script src="<c:url value="/users/js/login-signup.js"/>"></script>
 <script src="<c:url value="/users/js/scripts.js"/>" defer></script>
-
-
+<script src="<c:url value="/users/js/cart.js"/>" defer></script>
+<script>
+    // Function để lưu ghế đã chọn vào input khi nhấn vào ghế
+    function selectSeat(seatNumber) {
+        document.getElementById('seats').value = seatNumber; // Lưu giá trị ghế vào ô input
+        alert("Bạn đã chọn ghế số: " + seatNumber); // Thông báo ghế đã chọn
+    }
+</script>
 </body>
+
 </html>

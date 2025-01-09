@@ -299,97 +299,83 @@ label {
 }
 
 
-/* Kiểm tra layout của form */
-#codForm, #vnpayForm {
 
-    position: absolute;
-    top:7%;
-    left: 30%;
-    display: none;
-
-    padding: 20px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 10px;
-    z-index: 1000;
-    font-size: 11px;
-    height: auto;
-
-}
-
-.but {
-    display: flex;
-}
-p{
-    font-size: 13px;
-    margin-top: 5px;
-}
-
-/*css cho button trong form*/
-#codForm button, #vnpayForm button {
-    text-align: center;
-    padding: 5px;
-    border-radius: 10px;
-
-    margin: 50px;
-    width: 137px;
-    cursor: pointer;
-    background-color: #1c293d;
-    border: none;
-    color: #ffffff;
-}
-
-/* Khi form được hiển thị, sử dụng class 'show' */
-#codForm.show, #vnpayForm.show {
-    display: block;
-
-}
-
-#vnpayForm img {
-    width: 40px;
-    height: 40px;
-    justify-content: center;
-}
-
-#codForm button:hover, #vnpayForm button:hover {
-    background-color: #007bff;
-}
-
-/* Lớp CSS để khóa cuộn trang khi overlay hiển thị */
-body.overlay-active {
-    overflow: hidden;
-}
-
-.title {
-    display: flex;
-    font-weight: bold;
-    color: #007bff;
-    font-size: 25px;
-    justify-content: center;
-    padding: 10px;
-
-}
-
-/* Hiệu ứng overlay khi form được hiển thị */
-/* Lớp phủ tối màn hình */
-.overlay {
-    display: none;
-    /* Mặc định là ẩn */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Màu tối */
-    z-index: 1000;
-    /* Đảm bảo lớp phủ ở trên tất cả */
-
-}
-
-.overlay.show {
-    display: block;
-}
 .hrep :hover {
     color: #2546ea;
     
+}
+
+/* Phần container chứa form */
+#section-content-1 {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* Tiêu đề */
+h2 {
+    text-align: center;
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+}
+
+/* Các nhóm form */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.form-group input:disabled {
+    background-color: #e0e0e0;
+    color: #888;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+/* Nút thanh toán */
+.btn {
+    display: inline-block;
+    background-color: #28a745;
+    color: #fff;
+    font-weight: bold;
+    padding: 14px 30px;
+    text-align: center;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #218838;
+}
+
+/* Tăng độ sáng của button khi hover */
+.btn:active {
+    background-color: #1e7e34;
 }

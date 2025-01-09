@@ -69,5 +69,8 @@ public class MovieService {
         return movieDao.getListPoster();
     }
 
+    public double getTicketPriceById(String id) {
+        return movieDao.getTicketPrice(id);
     }
+}
 

@@ -29,6 +29,8 @@ public class GetMovieDao {
                     movie.setId(rs.getInt("id"));
                     movie.setTitle(rs.getString("title"));
                     movie.setDescription(rs.getString("description"));
+                    movie.setTicketPrice(rs.getDouble("ticketPrice"));
+                    movie.setRevenue(rs.getDouble("revenue"));
                     movie.setGenre(rs.getString("genre"));
                     movie.setReleaseDate(rs.getDate("releaseDate"));
                     movie.setPosterUrl(rs.getString("posterUrl"));

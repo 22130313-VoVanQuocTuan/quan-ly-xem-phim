@@ -10,6 +10,8 @@ public class Movie {
     private String genre;
     private Date releaseDate;
     private String posterUrl;
+    private Double ticketPrice;
+    private Double revenue;
 
     private int duration;
 
@@ -25,6 +27,22 @@ public class Movie {
         this.posterUrl = posterUrl;
 
         this.duration = duration;
+    }
+
+    public Double getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(Double ticketPrice) {
+        this.ticketPrice = ticketPrice;
+    }
+
+    public Double getRevenue() {
+        return revenue;
+    }
+
+    public void setRevenue(Double revenue) {
+        this.revenue = revenue;
     }
 
     public int getId() {

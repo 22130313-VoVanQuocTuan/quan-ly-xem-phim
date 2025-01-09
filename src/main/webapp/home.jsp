@@ -162,19 +162,19 @@
             <c:forEach var="movie" items="${movieList}" begin="0" end="7">
                 <div class="product-one-content-item">
                     <div class="img-product">
-                        <a href="product-detail?id=${movie.id}">
+                        <a href="movie-detail?id=${movie.id}">
                             <img src="${movie.posterUrl}" alt="${movie.title}">
                         </a>
                         <span class="sale-box">NEW</span>
                     </div>
                     <div class="product-title">
                         <div class="name-product">
-                            <a href="product-detail?id=${movie.id}">${movie.title}</a>
+                            <a href="movie-detail?id=${movie.id}">${movie.title}</a>
                         </div>
                         <div class="product-price">
                             <li>Thể loại: ${movie.genre}</li>
                             <li>Thời lượng: ${movie.duration} phút</li>
-                            <a href="add-cart?id=${movie.id}" class="add-to-cart">Thêm vào yêu thích</a>
+                            <a href="add-cart?id=${movie.id}" class="add-to-cart" style="left: calc(6% + 1px);">Thêm vào yêu thích</a>
                         </div>
                     </div>
                 </div>
