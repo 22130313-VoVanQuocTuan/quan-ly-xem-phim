@@ -30,7 +30,7 @@ public class GetMovieDao {
                     movie.setTitle(rs.getString("title"));
                     movie.setDescription(rs.getString("description"));
                     movie.setGenre(rs.getString("genre"));
-                    movie.setReleaseDate(rs.getDate("releaseDate"));
+                    movie.setReleaseDate(rs.getTimestamp("releaseDate"));
                     movie.setPosterUrl(rs.getString("posterUrl"));
                     movie.setDuration(rs.getInt("duration"));
 

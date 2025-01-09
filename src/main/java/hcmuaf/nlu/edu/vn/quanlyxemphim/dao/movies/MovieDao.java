@@ -35,7 +35,6 @@ public class MovieDao {
     public List<Movie> getAllMovies() throws SQLException {
         String sql = "SELECT * FROM movies";
         List<Movie> movies = new ArrayList<>();
-
         try (PreparedStatement stmt = dbConnect.preparedStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
@@ -49,7 +48,7 @@ public class MovieDao {
     // Lấy ra sản phẩm của danh mục dựa vào thể loại
     public List<Movie> getAllMoviesByGenre(int categoryId) throws SQLException {
         String sql = "SELECT * FROM movies WHERE genre = ?";
-        List<Movie> products = new ArrayList<>();
+        List<Movie> movies = new ArrayList<>();
 
         try (PreparedStatement stmt = dbConnect.preparedStatement(sql)) {
             stmt.setInt(1, categoryId); // set categoryId =1
@@ -58,25 +57,25 @@ public class MovieDao {
             }
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
-
-                    products.add(mapResultSetToMovie(rs));
+                    movies.add(mapResultSetToMovie(rs));
                 }
             }
         }
-        return products;
+        return movies;
     }
+
     // Hàm thêm phim
     public boolean addMovie(Movie movie) {
-        String sql = "INSERT INTO movies (title, description, genre, releaseDate, posterUrl,  duration) " +
-                "VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO movies (title, description, genre, releaseDate, posterUrl,duration,createdAt,ticketPrice) " +
+                "VALUES (?, ?, ?, NOW(),?, ?,NOW(),?)";
         try (PreparedStatement stmt = dbConnect.preparedStatement(sql)) {
             // Gán giá trị cho các tham số trong câu lệnh SQL
             stmt.setString(1, movie.getTitle());
             stmt.setString(2, movie.getDescription());
             stmt.setString(3, movie.getGenre());
-            stmt.setDate(4, movie.getReleaseDate());
-            stmt.setString(5, movie.getPosterUrl());
-            stmt.setInt(7, movie.getDuration());
+            stmt.setString(4, movie.getPosterUrl());
+            stmt.setInt(5, movie.getDuration());
+            stmt.setDouble(6,movie.getTicketPrice());
 
             // Thực hiện thêm dữ liệu vào bảng
             int rowsAdded = stmt.executeUpdate();
@@ -97,7 +96,7 @@ public class MovieDao {
             stmt.setString(1, movie.getTitle());
             stmt.setString(2, movie.getDescription());
             stmt.setString(3, movie.getGenre());
-            stmt.setDate(4, movie.getReleaseDate());
+            stmt.setTimestamp(4, movie.getReleaseDate());
             stmt.setString(5, movie.getPosterUrl());
             stmt.setInt(7, movie.getDuration());
             stmt.setTimestamp(8, new Timestamp(System.currentTimeMillis())); // Cập nhật thời gian hiện tại
@@ -133,9 +132,13 @@ public class MovieDao {
         movie.setTitle(rs.getString("title"));
         movie.setDescription(rs.getString("description"));
         movie.setGenre(rs.getString("genre"));
-        movie.setReleaseDate(rs.getDate("releaseDate"));
+        movie.setReleaseDate(rs.getTimestamp("releaseDate"));
         movie.setPosterUrl(rs.getString("posterUrl"));
         movie.setDuration(rs.getInt("duration"));
+        movie.setRevenue(rs.getDouble("revenue"));
+        movie.setTicketPrice(rs.getDouble("ticketPrice"));
+        movie.setCreatedAt(Timestamp.valueOf(rs.getString("createdAt")));
+        movie.setUpdatedAt(Timestamp.valueOf(rs.getString("updatedAt")));
         return movie;
     }
 
@@ -149,12 +152,144 @@ public class MovieDao {
             while (rs.next()) {
                 movies.add(mapResultSetToMovie(rs));
             }
-
         }
         return movies;
     }
 
+    public List<Movie> getNewestMovies() {
+        List<Movie> movies = new ArrayList<>();
+        // Lấy tất cả các bộ phim, sắp xếp theo ngày tạo giảm dần (mới nhất lên đầu)
+        String sql = "SELECT * FROM movies ORDER BY createdAt DESC";
+        try (PreparedStatement stmt = dbConnect.preparedStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Movie movie = new Movie();
+                movie.setId(rs.getInt("id"));
+                movie.setTitle(rs.getString("title"));
+                movie.setDescription(rs.getString("description"));
+                movie.setGenre(rs.getString("genre"));
+                movie.setReleaseDate(Timestamp.valueOf(rs.getString("releaseDate")));
+                movie.setPosterUrl(rs.getString("posterUrl"));
+                movie.setDuration(rs.getInt("duration"));
+                movie.setRevenue(rs.getDouble("revenue"));
+                movies.add(movie);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
 
+    // lấy ra top 10 bộ phim có doanh thu cao nhất.
+    public List<Movie> getTop10HighestRevenueMovies() {
+        List<Movie> movies = new ArrayList<>();
+        String sql = "SELECT * FROM movies ORDER BY revenue DESC LIMIT 10";
+
+        try (PreparedStatement stmt = dbConnect.preparedStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                Movie movie = new Movie();
+                movie.setId(rs.getInt("id"));
+                movie.setTitle(rs.getString("title"));
+                movie.setDescription(rs.getString("description"));
+                movie.setGenre(rs.getString("genre"));
+                movie.setReleaseDate(Timestamp.valueOf(rs.getString("releaseDate")));
+                movie.setPosterUrl(rs.getString("posterUrl"));
+                movie.setDuration(rs.getInt("duration"));
+                movie.setRevenue(rs.getDouble("revenue"));
+                movies.add(movie);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return movies;
+    }
+
+    // Lấy ra danh sách các phim thể loại là phim Hành động
+    public List<Movie> getActionMovies() throws SQLException {
+        List<Movie> actionMovies = new ArrayList<>();
+        String sql = "SELECT * FROM movies WHERE genre = 'Hành động'"; // Câu lệnh SQL
+        // Tạo statement và thực thi truy vấn
+        try (Statement stmt = dbConnect.preparedStatement(sql);
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                // Lấy thông tin từ kết quả truy vấn
+                int id = rs.getInt("id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                String genre = rs.getString("genre");
+                Timestamp releaseDate = rs.getTimestamp("releaseDate");
+                String posterUrl = rs.getString("posterUrl");
+                int duration = rs.getInt("duration");
+                double revenue = rs.getDouble("revenue");
+                double ticketPrice = rs.getDouble("ticketPrice");
+                Timestamp createdAt = rs.getTimestamp("createdAt");
+                Timestamp updatedAt = rs.getTimestamp("updatedAt");
+                // Tạo đối tượng Movie và thêm vào danh sách
+                Movie movie = new Movie(id, title, description, genre, releaseDate, posterUrl, ticketPrice, duration, revenue, createdAt,updatedAt);
+                actionMovies.add(movie);
+            }
+        }
+
+        return actionMovies;
+    }
+
+    // Lấy ra danh sách các phim thể loại là phim Hài
+    public List<Movie> getComedyMovies() throws SQLException {
+        List<Movie> comedyMovies = new ArrayList<>();
+        String sql = "SELECT * FROM movies WHERE genre = 'Hài'"; // Câu lệnh SQL
+        // Tạo statement và thực thi truy vấn
+        try (Statement stmt = dbConnect.preparedStatement(sql);
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                // Lấy thông tin từ kết quả truy vấn
+                int id = rs.getInt("id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                String genre = rs.getString("genre");
+                Timestamp releaseDate = rs.getTimestamp("releaseDate");
+                String posterUrl = rs.getString("posterUrl");
+                int duration = rs.getInt("duration");
+                double revenue = rs.getDouble("revenue");
+                double ticketPrice = rs.getDouble("ticketPrice");
+                Timestamp createdAt = rs.getTimestamp("createdAt");
+                Timestamp updatedAt = rs.getTimestamp("updatedAt");
+                // Tạo đối tượng Movie và thêm vào danh sách
+                Movie movie = new Movie(id, title, description, genre, releaseDate, posterUrl, ticketPrice, duration, revenue, createdAt,updatedAt);
+                comedyMovies.add(movie);
+            }
+        }
+        return comedyMovies;
+    }
+
+    // Lấy ra danh sách các phim thể loại là phim Tình cảm
+    public List<Movie> getRomanceMovie() throws SQLException {
+        List<Movie> romanceMovies = new ArrayList<>();
+        String sql = "SELECT * FROM movies WHERE genre = 'Tình cảm'"; // Câu lệnh SQL
+        // Tạo statement và thực thi truy vấn
+        try (Statement stmt = dbConnect.preparedStatement(sql);
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                // Lấy thông tin từ kết quả truy vấn
+                int id = rs.getInt("id");
+                String title = rs.getString("title");
+                String description = rs.getString("description");
+                String genre = rs.getString("genre");
+                Timestamp releaseDate = rs.getTimestamp("releaseDate");
+                String posterUrl = rs.getString("posterUrl");
+                int duration = rs.getInt("duration");
+                double revenue = rs.getDouble("revenue");
+                double ticketPrice = rs.getDouble("ticketPrice");
+                Timestamp createdAt = rs.getTimestamp("createdAt");
+                Timestamp updatedAt = rs.getTimestamp("updatedAt");
+                // Tạo đối tượng Movie và thêm vào danh sách
+                Movie movie = new Movie(id, title, description, genre, releaseDate, posterUrl, ticketPrice, duration, revenue, createdAt,updatedAt);
+                romanceMovies.add(movie);
+            }
+        }
+        return romanceMovies;
+    }
 }
+
 
 

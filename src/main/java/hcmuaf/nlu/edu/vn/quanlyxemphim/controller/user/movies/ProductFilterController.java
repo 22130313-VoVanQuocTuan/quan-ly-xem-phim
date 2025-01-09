@@ -77,7 +77,7 @@
 //            request.setAttribute("products", products);
 //            request.setAttribute("categoryId", categoryIdParam);
 //            // Chuyển hướng tới JSP để hiển thị
-//            request.getRequestDispatcher("/users/page/product.jsp").forward(request, response);
+//            request.getRequestDispatcher("/users/page/movie.jsp").forward(request, response);
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Lỗi khi lấy sản phẩm từ cơ sở dữ liệu");

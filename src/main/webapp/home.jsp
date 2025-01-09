@@ -96,23 +96,26 @@
                     <span class="none-a"><i class="fa-solid fa-list"
                                             style="color: #d0cdcd;"></i> &nbsp;&nbsp;THỂ LOẠI</span>
                     <ul class="items">
-                        <li><a href="product-category?categoryId=1">&nbsp;&nbsp;<i
+                        <li><a href="product?type=Action">&nbsp;&nbsp;<i
                                 class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HÀNH ĐỘNG</a></li>
-                        <li><a href="/tqh/product-category?categoryId=2">&nbsp;&nbsp;<i
+                        <li><a href="product?type=Comedy">&nbsp;&nbsp;<i
                                 class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HÀI</a></li>
-                        <li><a href="/tqh/product-category?categoryId=3">&nbsp;&nbsp;<i
+                        <li><a href="product?type=Romance">&nbsp;&nbsp;<i
                                 class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;TÌNH CẢM</a></li>
-
                     </ul>
                 </li>
                 <li class="propClone"><a href="home-page"><i class="fa-solid fa-house"></i>&nbsp;&nbsp; TRANG CHỦ </a>
                 </li>
 
-                <li class="propClone"><a href="product"><i class="fa-brands fa-product-hunt"></i>
-                    &nbsp;&nbsp;PHIM MỚI</a>
+                <li class="propClone">
+                    <a href="product?type=new">
+                        <i class="fa-brands fa-product-hunt"></i>&nbsp;&nbsp;PHIM MỚI
+                    </a>
                 </li>
-                <li class="propClone"><a id="" href="cart-items"><i
-                        class="fas fa-shopping-cart"></i>&nbsp;&nbsp; PHIM HOT</a>
+                <li class="propClone">
+                    <a href="product?type=hot">
+                        <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;PHIM HOT
+                    </a>
                 </li>
                 <li class="propClone">
                     <span class="none-a"> <i class="fa-solid fa-book"></i> &nbsp;&nbsp; HƯỚNG DẪN </span>
@@ -155,7 +158,7 @@
         <div class="product-one-content-title">
             <div class="title">
                 <h3>Phim hot</h3>
-                <span><a class="highlight-text" href="movies">Xem thêm</a></span>
+                <span><a class="highlight-text" href="product?type=hot">Xem thêm</a></span>
             </div>
         </div>
         <div class="product-one-content-items">
@@ -188,7 +191,7 @@
         <div class="slider-product-one-content-title">
             <div class="title">
                 <h3>Phim Hài</h3>
-                <span><a class="highlight-text" href="/tqh/movie-category?genre=comedy">Xem thêm</a></span>
+                <span><a class="highlight-text" href="product?type=Comedy">Xem thêm</a></span>
             </div>
         </div>
         <div class="slider-product-one-content-container">
@@ -301,7 +304,7 @@
         <div class="slider-product-two-content-title">
             <div class="title">
                 <h3>Hành động</h3>
-                <span><a class="highlight-text" href="/tqh/product-category?categoryId=2">Xem thêm</a></span>
+                <span><a class="highlight-text" href="product?type=Action">Xem thêm</a></span>
             </div>
         </div>
         <div class="slider-product-two-content-container">
@@ -326,7 +329,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </c:if>
                     </c:forEach>
                 </div>
@@ -418,8 +420,8 @@
     <div class="slider-product-three-content">
         <div class="slider-product-three-content-title">
             <div class="title">
-                <h3>Cát,Đá Và Sỏi</h3>
-                <span><a class="highlight-text" href="/tqh/product-category?categoryId=3">Xem thêm</a></span>
+                <h3>Tình cảm</h3>
+                <span><a class="highlight-text" href="product?type=Romance">Xem thêm</a></span>
             </div>
         </div>
         <div class="slider-product-three-content-container">
@@ -528,8 +530,6 @@
         </div>
     </div>
 </div>
-
-
 
 <div id="section-footer">
     <div class="container">

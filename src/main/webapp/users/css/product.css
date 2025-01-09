@@ -19,7 +19,6 @@ a {
 }
 
 .conten .item {
-
    margin: 0;
    padding: 0;
    background-color: #f4f4ff;
@@ -70,7 +69,6 @@ button:hover {
    min-width: 280px;
    display: flex;
    flex-direction: column;
-   
    padding-top: 15px;
    border-radius: 10px;
 }
@@ -82,20 +80,18 @@ button:hover {
    cursor: pointer;
    border-radius: 5px;
    margin: 10px 20px;
-   
    background-color: #ffffff;
    border-bottom: 1px solid;
    transition: transform 0.3s ease;
 }
 
-/* CSS mặc định cho item */
 .left-sidebar .item a {
    color: #000;
    text-decoration: none;
    font-size: 15px;
 }
 
-/* CSS khi item được chọn */
+/* Highlighted item when active */
 .left-sidebar .item.active a {
    color: #fd2200;
    font-weight: bold;
@@ -129,101 +125,49 @@ button:hover {
    height: auto;
    flex-direction: column;
    align-items: center;
+   margin-left: 15%;
 }
 
-/* Bộ lọc */
-.filter {
-   display: flex;
-   width: 100%;
-   height: auto;
-   margin-top: 20px;
-   background-color: #ffffff;
-   margin-bottom: 15px;
-   gap: 42px;
+.conten .right h1{
+   font-family: 'Arial', sans-serif;
+   font-size: 36px;
+   font-weight: bold;
+   color: #2c3e50;
+   text-align: center;
+   padding: 20px 0;
+   background: linear-gradient(135deg, #ff6f00, #ffcc00);
+   color: transparent;
+   -webkit-background-clip: text;
+   background-clip: text;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   letter-spacing: 2px;
+   text-transform: uppercase;
+   margin-bottom: 40px;
 }
 
-.sort {
-   padding: 10px;
-   cursor: pointer;
-   font-size: 15px;
-   background-color: #e8e5e5;
-   border-radius: 5px;
-   height: 15px;
-}
-
-.sort-price {
-   position: relative;
-}
-
-/* Ẩn nội dung của menu thả xuống */
-.dropdown-content {
-   display: none;
-   position: absolute;
-   background-color: white;
-   border: 1px solid #ccc;
-   z-index: 6;
-   left: 42px;
-   top: 22px;
-   height: 100px;
-   width: 167px;
-
-}
-
-.dropdown-content li {
-   list-style: none;
-   font-size: 15px;
-   margin: 20px;
-   margin-left: -29px;
-   border-bottom: 1px solid;
-   cursor: pointer;
-}
-
-.dropdown-content li:hover {
-   color: #d10505;
-}
-
-/* Hiện menu thả xuống khi di chuột vào .sort hoặc menu */
-.sort:hover + .dropdown .dropdown-content,
-.dropdown:hover .dropdown-content {
-   display: block;
-}
-
+/* Right content */
 .conten .right .row, .pagination {
    background-color: rgba(255, 255, 255, 0);
    display: flex;
-
    flex-wrap: wrap;
    gap: 11px;
    padding: 0px;
+   margin-left: 5%; /* Adjust to center */
+   justify-content: space-between; /* Adjust to make space between items */
+   margin-top: 5%;
 }
 
 .conten .right .name-cart {
-   width: 165px;
+   width: 22%; /* Adjust width to make room for 4 items */
    padding: 3px;
    transition: box-shadow 0.3s ease;
    background-color: #fafafa;
    border-radius: 10px;
    border: 1px solid;
    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Thêm hiệu ứng nổi lên khi di chuột */
-.conten .right .name-cart:hover {
-   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
-}
-
-.conten .right .row img {
-   width: 100%;
-   max-width: 127px;
-   border-radius: 20px;
-   margin-left: 10px;
-   transition: transform 0.3s ease;
-   height: 150px;
-   padding: 10px;
-}
-
-.conten .right .name-cart img:hover {
-   transform: scale(1.08);
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 .conten .right .name-cart h3 {
@@ -241,6 +185,17 @@ button:hover {
    margin-bottom: 5px;
    margin-left: 10px;
    font-size: 14px;
+}
+
+.conten .right .row img {
+   width: 100%;
+   max-width: 127px;
+   border-radius: 20px;
+   margin-left: 10px;
+   transition: transform 0.3s ease;
+   height: 150px;
+   padding: 10px;
+   object-fit: cover;  /* Chỉnh hình ảnh cho phù hợp */
 }
 
 /* Buttons */
@@ -269,6 +224,7 @@ button:hover {
    display: flex;
    justify-content: center;
    padding: 15px;
+   margin-left: 5%; /* Adjust to center */
 }
 
 .conten .right .pagination button {
@@ -281,6 +237,7 @@ button:hover {
    padding: 5px 10px;
 }
 
+/* Social media floating icons */
 .fa-whatsapp {
    bottom: 50px;
    right: 8px;
@@ -305,7 +262,7 @@ li {
    list-style: none;
 }
 
-/* Cấu trúc chung cho các discount */
+/* Discount section */
 .slide-discount {
    display: flex;
    flex-direction: column;
@@ -339,7 +296,7 @@ li {
    color: #555;
 }
 
-
+/* Mobile responsiveness */
 @media screen and (max-width: 768px) {
    .icon input {
       width: 150px;
@@ -352,6 +309,7 @@ li {
    .danhmuc {
       font-size: 24px;
    }
+
    .conten {
       display: grid;
    }
@@ -360,61 +318,28 @@ li {
       width: 100%;
    }
 
-  
    .filter{
       height: auto;
    }
-   
+
    .conten .right .row {
       grid-template-columns: repeat(2, 1fr); /* Thay 3 cột thành 2 cột */
       display: grid;
-    flex-wrap: wrap;
-    gap: 11px;
-    padding: 0px;    
-    width: 53%;  /* Đảm bảo sản phẩm chiếm đầy đủ chiều rộng của ô lưới */
-   margin-left: auto;
-   margin-right: auto;
+      flex-wrap: wrap;
+      gap: 11px;
+      padding: 0px;
+      width: 53%;  /* Đảm bảo sản phẩm chiếm đầy đủ chiều rộng của ô lưới */
+      margin-left: auto;
+      margin-right: auto;
    }
-
-  
-
 }
 
 @media screen and (max-width: 480px) {
-   .conten .left-sidebar {
-      width: 100%;
-   }
-   .conten .right {
-      width: 20px;
+   .icon input {
+      width: 120px;
    }
 
-   .conten .right .row {
-      flex-direction: column;
-   }
-
-   .conten .right .name-cart {
-      width: 100%;
-   }
-
-   .sort {
-      font-size: 18px;
-   }
    .filter{
-      margin-left: auto;
-      margin-right: auto;
-   }
-   .filter p{
-      font-size: 10px;
-      padding: auto;
-   }
-   .dropdown{
-      padding: 0px;
-   }
-   .conten .right .pagination {
-      display: flex;
-      margin-left: auto;
-      margin-right: auto;
-      flex-wrap: nowrap;
-      width: 300px;
+      height: auto;
    }
 }

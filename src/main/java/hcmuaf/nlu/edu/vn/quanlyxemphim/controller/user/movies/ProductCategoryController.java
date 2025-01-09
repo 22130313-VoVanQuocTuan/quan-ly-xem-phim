@@ -31,7 +31,7 @@
 //            // Gửi dữ liệu sản phẩm và categoryId đến JSP để hiển thị
 //            request.setAttribute("products", products);
 //            request.setAttribute("categoryId", categoryId);
-//            request.getRequestDispatcher("/users/page/product.jsp").forward(request, response);
+//            request.getRequestDispatcher("/users/page/movie.jsp").forward(request, response);
 //        } catch (SQLException e) {
 //            // Xử lý lỗi truy vấn cơ sở dữ liệu
 //            response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Database error");

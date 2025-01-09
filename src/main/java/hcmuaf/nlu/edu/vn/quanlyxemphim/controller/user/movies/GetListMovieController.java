@@ -24,16 +24,10 @@ public class GetListMovieController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try {
-
-
             List<Movie> movieList = movieService.getAllMovies();
-
             // Gửi dữ liệu sản phẩm và categoryId đến JSP để hiển thị
             List<String> posterUrlList = movieService.getListPoster();
-
-
             req.setAttribute("poster", posterUrlList);
-
             req.setAttribute("movieList", movieList);
             req.getRequestDispatcher("home.jsp").forward(req, resp);
 

@@ -30,9 +30,9 @@
 //                response.sendRedirect("products-list");
 //            }
 //        } else {
-//            // Nếu có lỗi, hiển thị thông báo lỗi và quay lại trang products.jsp
+//            // Nếu có lỗi, hiển thị thông báo lỗi và quay lại trang movies.jsp
 //            request.setAttribute("error", "Xóa sản phẩm thất bại");
-//            request.getRequestDispatcher("/admin/pages/products.jsp").forward(request, response);
+//            request.getRequestDispatcher("/admin/pages/movies.jsp").forward(request, response);
 //        }
 //    }
 //

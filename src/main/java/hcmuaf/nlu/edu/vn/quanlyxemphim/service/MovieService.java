@@ -19,9 +19,7 @@ public class MovieService {
     public MovieService() {
 
         this.getMovieDao = new GetMovieDao();
-
     }
-
 
     // Lấy ra danh sách tát cả phim
     public List<Movie> getAllMovies() throws SQLException {
@@ -53,10 +51,28 @@ public class MovieService {
         return movieDao.deleteMovie(id);
     }
 
+    // Lấy ra các bộ phim mới nhất
+    public List<Movie> getNewestMovies() {
+        return movieDao.getNewestMovies();
+    }
+    // lấy ra top 10 bộ phim có doanh thu cao nhất.
+    public List<Movie> getTop10HighestRevenueMovies() {
+        return movieDao.getTop10HighestRevenueMovies();
+    }
+    // Lấy ra danh sách các phim thể loại là phim Hành động
+    public List<Movie> getActionMovies() throws SQLException {
+        return movieDao.getActionMovies();
+    }
+    // Lấy ra danh sách các phim thể loại là phim Hài
+    public List<Movie> getComedyMovies() throws SQLException {
+        return movieDao.getComedyMovies();
+    }
+    // Lấy ra danh sách các phim thể loại là phim Tình cảm
+    public List<Movie> getRomanceMovie() throws SQLException {
+        return movieDao.getRomanceMovie();
+    }
+
     // -------------------Các phương thức filter sản phẩm-------------------------
-
-
-
 
 
     //Lấy danh sách sản phẩm theo tên tìm kiếm
@@ -69,5 +85,5 @@ public class MovieService {
         return movieDao.getListPoster();
     }
 
-    }
+}
 

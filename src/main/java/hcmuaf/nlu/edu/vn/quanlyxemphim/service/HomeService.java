@@ -14,10 +14,6 @@ public class HomeService {
         this.homeDao = new HomeDao();
     }
 
-    // Tổng số lượt xem
-    public int totalView() {
-        return homeDao.totalView();
-    }
 
     // Tổng số người dùng
     public int totalAccount() {
@@ -29,10 +25,10 @@ public class HomeService {
         return homeDao.totalRating();
     }
 
-    // Tổng doanh thu
-    public double totalSale() {
-        return homeDao.totalSale();
-    }
+//    // Tổng doanh thu
+//    public double totalSale() {
+//        return homeDao.totalSale();
+//    }
 
 
 
