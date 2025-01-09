@@ -6,4 +6,8 @@
     <welcome-file-list>
         <welcome-file>home-page</welcome-file>
     </welcome-file-list>
+
+    <session-config>
+        <session-timeout>30</session-timeout> <!-- Thời gian session hết hạn sau 30 phút -->
+    </session-config>
 </web-app>

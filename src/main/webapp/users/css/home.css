@@ -337,7 +337,7 @@ p {
 }
 
 #section-nav ul.navbar-center>li.propClone:hover {
-    background: linear-gradient(to right, #891f1f, #15283e);
+    background: #104834;
     box-shadow: 0 0 0 1px #c0c0c0 inset;
     border-radius: 5px 5px 0 0;
     transform: scale(1);
@@ -400,7 +400,7 @@ p {
 }
 
 #section-nav ul.navbar-center li ul.items li:hover {
-    background: linear-gradient(to right, #891f1f, #15283e);
+    background: #104834;
 }
 
 #section-nav ul.navbar-center li ul.items li:hover a {
@@ -1059,6 +1059,7 @@ p {
 
 .slider-product-one-content-item .product-title .product-price:hover .add-to-cart {
     display: block;
+    text-decoration: none;
 }
 
 .slider-product-one-content-item .product-title .product-price li {
@@ -1465,7 +1466,7 @@ p {
     display: none;
     position: absolute;
     top: 50%;
-    left: calc(2% + 1px);
+    left: calc(35% + 1px);
     transform: translateY(-50%);
     margin-left: 5px;
     padding: 2px 2px;

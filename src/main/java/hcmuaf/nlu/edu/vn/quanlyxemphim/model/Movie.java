@@ -45,6 +45,16 @@ public class Movie {
         this.ticketPrice = price;
     }
 
+
+    public void setTicketPrice(Double ticketPrice) {
+        this.ticketPrice = ticketPrice;
+    }
+
+
+    public void setRevenue(Double revenue) {
+        this.revenue = revenue;
+    }
+
     public int getId() {
         return id;
     }

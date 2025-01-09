@@ -289,6 +289,22 @@ public class MovieDao {
         }
         return romanceMovies;
     }
+    public double getTicketPrice(String id) {
+        String sql = "SELECT ticketPrice FROM movies WHERE id = ? ";
+        double ticketPrice = 0;
+        try (PreparedStatement ptm = dbConnect.preparedStatement(sql)) {
+            ptm.setString(1, id);
+            ResultSet rs = ptm.executeQuery();
+            if (rs.next()) {
+                ticketPrice = rs.getDouble("ticketPrice");
+
+            }
+            return ticketPrice;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
 
 

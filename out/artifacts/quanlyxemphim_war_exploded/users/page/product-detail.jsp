@@ -160,45 +160,34 @@
         <div class="product-details">
             <!-- Hình ảnh sản phẩm -->
             <div class="product-image">
-                <img src="${product.imageUrl}" alt="${product.name}" />
-                <div class="review-product">
+                <img src="${movie.posterUrl}" alt="${movie.title}" />
+                <div class="review-movie">
                     <div class="review">
                         <h2>Đánh giá</h2>
                         <form id="commentform" class="comment-form" action="create-rating" method="post">
-                            <input type="hidden" name="productId" value="${product.id}">
-                            <input type="hidden" name="userId" value="${sessionScope.user.id}"></input>
-                            <input type="hidden" name="categoryId" value="${product.categoryId}"></input>
+                            <input type="hidden" name="movieId" value="${movie.id}">
+                            <input type="hidden" name="userId" value="${sessionScope.user.id}">
                             </input>
                             <textarea name="content" rows="3" placeholder="Ý kiến của bạn..." required></textarea>
                             <c:if test="${not empty rating}">
                                 <p style="color: red;">${rating}</p> <!-- Hiển thị lỗi nếu có -->
                             </c:if>
-                            <button type="submit" >Gửi</button>
+                            <button type="submit">Gửi</button>
                         </form>
-
                     </div>
                 </div>
             </div>
+
             <!-- Thông tin sản phẩm -->
 
             <div class="product-info">
-                <h2 id="title-pro" class="product-title">Tên Sản Phẩm: ${product.name}</h2>
-                <p class="product-description">
-                    ${product.description}
+                <h2 id="title-movie" class="movie-title">Tên Phim: ${movie.title}</h2>
+                <p class="movie-description">
+                    ${movie.description}
                 </p>
-                <p><strong>Màu sắc: </strong>${product.color}</p>
-                <p><strong>Kích thước: </strong>${product.size}</p>
-                <p><strong>Đơn vị tính: </strong>${product.unit}</p>
-                <p><strong>Nhà phân phối: </strong>${product.supplier}</p>
-                <p class="product-price">Giá: <strong><fmt:formatNumber value="${product.discountPrice}" type="number" groupingUsed="true" /> ₫</strong></p>
-                <div class="product-options">
-                    <label for="quantity">Số lượng:</label>
-                    <input type="number" id="quantity" name="quantity" min="1" value="1" />
-                </div>
-                <button class="add-to-cart-btn"><a href="add-cart?id=${product.id}" style="color: #ffffff; text-decoration: none" >Thêm vào giỏ hàng</a></button>
-                <p class="contact">
-                    Liên hệ: <strong>0366633518</strong> hoặc <strong>0824.646.746 (Mr.Huy)</strong>
-                </p>
+                <p><strong>Thể loại: </strong>${movie.genre}</p>
+                <p><strong>Thời lượng: </strong>${movie.duration} phút</p>
+                <p><strong>Ngày phát hành: </strong><fmt:formatDate value="${movie.releaseDate}" pattern="dd/MM/yyyy" /></p>
             </div>
         </div>
     </div>
@@ -206,18 +195,23 @@
 
     <div id="section-content-2">
         <div class="products-similar">
-            <div class="similar-pro">
-                <h3>Sản phẩm tương tự</h3>
-            </div>
-            <div class="list-similar">
-                <c:forEach var="productCategory" items="${productCategory}" begin="0" end="11">
-                    <div class="similar">
-                        <a href="product-detail?id=${productCategory.id}&categoryId=${productCategory.categoryId}">
-                            <img src="${productCategory.imageUrl}" alt="${productCategory.name}">
-                        </a>
-                        <h3>${productCategory.name}</h3>
-                    </div>
-                </c:forEach>
+             <div class="list-similar">
+                 <h3>Đặt vé và chọn khung giờ</h3>
+                 <c:forEach var="room" items="${rooms}">
+                     <div class="room-info">
+                         <h4>Phòng chiếu: ${room.name}</h4>
+                         <div class="time-slots">
+                             <h5>Khung giờ chiếu:</h5>
+                             <c:forEach var="timeSlot" items="${timeSlots}">
+                                 <c:if test="${timeSlot.roomId == room.id}">
+                                     <a href="reservation?roomId=${room.id}&timeSlotId=${timeSlot.id}&movieId=${movie.id}&startTime=${timeSlot.startTime}">
+                                         <button>${timeSlot.startTime}</button>
+                                     </a>
+                                 </c:if>
+                             </c:forEach>
+                         </div>
+                     </div>
+                 </c:forEach>
             </div>
         </div>
     </div>
