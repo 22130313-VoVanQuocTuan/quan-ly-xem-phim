@@ -1,0 +1,161 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* General Section Style */
+#section-content-1 {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Container Style */
+.terms-container {
+    max-width: 1100px;
+    width: 77%;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    transition: all 0.3s ease-in-out;
+}
+
+.terms-container:hover {
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+/* Main Title */
+.terms-container h1 {
+    font-weight: 700;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 30px;
+    line-height: 1.4;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+/* Section Title */
+.terms-container h2 {
+    font-size: 20px;
+    color: #090a0a;
+    margin-top: 30px;
+    margin-bottom: 25px;
+    border-bottom: 3px solid #090a0a;
+    padding-bottom: 8px;
+    font-weight: 600;
+}
+
+/* Sub-section Title */
+.terms-container h3 {
+    font-size: 15px;
+    color: #000000;
+    margin-top: 25px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Paragraphs */
+.terms-container p {
+    font-size: 15px;
+    line-height: 1.8;  
+    margin-bottom: 25px; 
+    color: #555;
+    text-align: justify;
+}
+
+/* List Style */
+.terms-container ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+/* Các mục trong danh sách */
+.terms-container ul li {
+    font-size: 15px;
+    line-height: 1.5; 
+    color: #555;
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 20px;  
+}
+
+.terms-container ul li::before {
+    content: '\2022';
+    font-size: 20px;
+    color: #090a0a;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Links */
+.terms-container a {
+    color: #2980b9;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.terms-container a:hover {
+    color: #3498db;
+    text-decoration: underline;
+}
+
+/* Strong Text */
+.terms-container strong {
+    font-weight: bold;
+    color: #000000;
+}
+
+/* Button-like Links */
+.terms-container .btn-link {
+    color: #fff;
+    background-color: #3498db;
+    padding: 10px 20px;
+    border-radius: 6px;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.terms-container .btn-link:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .terms-container {
+        padding: 30px 15px;
+    }
+
+    .terms-container h1 {
+        font-size: 28px;
+    }
+
+    .terms-container h2 {
+        font-size: 24px;
+    }
+
+    .terms-container h3 {
+        font-size: 20px;
+    }
+
+    .terms-container p {
+        font-size: 16px;
+    }
+
+    .terms-container ul li {
+        font-size: 16px;
+    }
+}

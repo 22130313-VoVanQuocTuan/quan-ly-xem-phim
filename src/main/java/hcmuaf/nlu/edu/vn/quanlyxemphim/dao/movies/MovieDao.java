@@ -1,0 +1,160 @@
+package hcmuaf.nlu.edu.vn.quanlyxemphim.dao.movies;
+
+
+import hcmuaf.nlu.edu.vn.quanlyxemphim.dao.DBConnect;
+import hcmuaf.nlu.edu.vn.quanlyxemphim.model.Movie;
+
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MovieDao {
+    private DBConnect dbConnect;
+
+    public MovieDao() {
+        this.dbConnect = new DBConnect();
+    }
+
+
+    // Lấy ra danh sách hình ảnh poster của phim
+    public List<String> getListPoster() {
+        String sql = "SELECT posterUrl FROM movies";
+        List<String> posterUrls = new ArrayList<>();
+        try (PreparedStatement ptm = dbConnect.preparedStatement(sql);
+             ResultSet rs = ptm.executeQuery()) {
+            while (rs.next()) {
+                posterUrls.add(rs.getString("posterUrl"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return posterUrls;
+    }
+
+    // Lấy ra danh sách tất cả phim
+    public List<Movie> getAllMovies() throws SQLException {
+        String sql = "SELECT * FROM movies";
+        List<Movie> movies = new ArrayList<>();
+
+        try (PreparedStatement stmt = dbConnect.preparedStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+            while (rs.next()) {
+                movies.add(mapResultSetToMovie(rs));
+            }
+        }
+        return movies;
+    }
+
+
+    // Lấy ra sản phẩm của danh mục dựa vào thể loại
+    public List<Movie> getAllMoviesByGenre(int categoryId) throws SQLException {
+        String sql = "SELECT * FROM movies WHERE genre = ?";
+        List<Movie> products = new ArrayList<>();
+
+        try (PreparedStatement stmt = dbConnect.preparedStatement(sql)) {
+            stmt.setInt(1, categoryId); // set categoryId =1
+            if (stmt == null) {
+                throw new SQLException("Failed to create PreparedStatement");
+            }
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+
+                    products.add(mapResultSetToMovie(rs));
+                }
+            }
+        }
+        return products;
+    }
+    // Hàm thêm phim
+    public boolean addMovie(Movie movie) {
+        String sql = "INSERT INTO movies (title, description, genre, releaseDate, posterUrl,  duration) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement stmt = dbConnect.preparedStatement(sql)) {
+            // Gán giá trị cho các tham số trong câu lệnh SQL
+            stmt.setString(1, movie.getTitle());
+            stmt.setString(2, movie.getDescription());
+            stmt.setString(3, movie.getGenre());
+            stmt.setDate(4, movie.getReleaseDate());
+            stmt.setString(5, movie.getPosterUrl());
+            stmt.setInt(7, movie.getDuration());
+
+            // Thực hiện thêm dữ liệu vào bảng
+            int rowsAdded = stmt.executeUpdate();
+            return rowsAdded > 0; // Trả về true nếu thêm thành công
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false; // Trả về false nếu thêm thất bại
+        }
+    }
+
+
+    // Phương thức cập nhật sản phẩm trong cơ sở dữ liệu
+    // Cập nhật thông tin phim
+    public boolean updateMovie(int id, Movie movie) {
+        String sql = "UPDATE movies SET title = ?, description = ?, genre = ?, releaseDate = ?, posterUrl = ?,  duration = ?, updatedAt = ? WHERE id = ?";
+        try (PreparedStatement stmt = dbConnect.preparedStatement(sql)) {
+            // Gán giá trị cho các tham số trong câu lệnh SQL
+            stmt.setString(1, movie.getTitle());
+            stmt.setString(2, movie.getDescription());
+            stmt.setString(3, movie.getGenre());
+            stmt.setDate(4, movie.getReleaseDate());
+            stmt.setString(5, movie.getPosterUrl());
+            stmt.setInt(7, movie.getDuration());
+            stmt.setTimestamp(8, new Timestamp(System.currentTimeMillis())); // Cập nhật thời gian hiện tại
+            stmt.setInt(9, id); // Gán ID của phim cần cập nhật
+
+            int rowsUpdated = stmt.executeUpdate(); // Thực hiện câu lệnh SQL
+            return rowsUpdated > 0; // Trả về true nếu có ít nhất 1 dòng được cập nhật
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false; // Trả về false nếu xảy ra lỗi hoặc không có dòng nào được cập nhật
+    }
+
+
+    // Xóa phim theo ID
+    public boolean deleteMovie(String id) {
+        String sql = "DELETE FROM movies WHERE id = ?";
+        try (PreparedStatement stmt = dbConnect.preparedStatement(sql)) {
+            stmt.setString(1, id); // Gán ID của phim cần xóa
+
+            int rowsDeleted = stmt.executeUpdate(); // Thực hiện câu lệnh SQL
+            return rowsDeleted > 0; // Trả về true nếu có ít nhất 1 dòng được xóa
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false; // Trả về false nếu có lỗi xảy ra hoặc không có dòng nào bị xóa
+    }
+
+    // Phương thức helper để map dữ liệu từ ResultSet vào đối tượng Movie
+    private Movie mapResultSetToMovie(ResultSet rs) throws SQLException {
+        Movie movie = new Movie();
+        movie.setId(rs.getInt("id"));
+        movie.setTitle(rs.getString("title"));
+        movie.setDescription(rs.getString("description"));
+        movie.setGenre(rs.getString("genre"));
+        movie.setReleaseDate(rs.getDate("releaseDate"));
+        movie.setPosterUrl(rs.getString("posterUrl"));
+        movie.setDuration(rs.getInt("duration"));
+        return movie;
+    }
+
+    // LẤY RA phim theo tên
+    public List<Movie> getListMoviesByName(String title) throws SQLException {
+        String sql = "SELECT * FROM movies WHERE title LIKE ? COLLATE utf8mb4_unicode_ci";
+        List<Movie> movies = new ArrayList<>();
+        try (PreparedStatement ptm = dbConnect.preparedStatement(sql)) {
+            ptm.setString(1, "%" + title + "%");
+            ResultSet rs = ptm.executeQuery();
+            while (rs.next()) {
+                movies.add(mapResultSetToMovie(rs));
+            }
+
+        }
+        return movies;
+    }
+
+
+}
+
+
