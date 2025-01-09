@@ -56,14 +56,14 @@
             <div class="menu">
                 <!-- Logo bên trái -->
                 <div class="logo">
-                    <a href="home-page"><img src="users/img/logo.png" alt="Logo"></a>
+                    <a href="home-page"><img src="https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-cinema-reel-icon-simple-vector-png-image_4849780.png" alt="Logo"></a>
                 </div>
 
                 <!-- Thanh tìm kiếm ở giữa -->
                 <form action="product" method="GET">
                     <div class="search-bar">
                         <input type="hidden" name="search" value="true">
-                        <input name="name" type="text" placeholder="Tìm kiếm sản phẩm...">
+                        <input name="name" type="text" placeholder="Tìm kiếm tên phim...">
                         <button type="submit" title="icon"><i class="fa fa-fw fa-search"></i></button>
                     </div>
                 </form>
