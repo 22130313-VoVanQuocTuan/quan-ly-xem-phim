@@ -74,10 +74,10 @@
                         <div class="cart">
                             <div class="cart-wrapper">
                                 <!-- Giỏ hàng -->
-                                <a href="favorite-items" style="color: #ff0000">
+                                <a href="favorites" style="color: #ff0000">
                                     <i class="fas fa-heart"></i>
                                 </a>
-                                <span class="cart-count" id="cart-count">${sessionScope.cartItemCount}</span>
+                                <span class="cart-count" id="cart-count">${sessionScope.favoriteCount}</span>
                             </div>
 
                         </div>
@@ -105,12 +105,12 @@
 
                         <li class="propClone">
                             <a href="product?type=new">
-                                <i class="fa-brands fa-product-hunt"></i>&nbsp;&nbsp;PHIM MỚI
+                                <i class="fa-solid fa-film"></i>&nbsp;&nbsp;PHIM MỚI
                             </a>
                         </li>
                         <li class="propClone">
                             <a href="product?type=hot">
-                                <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;PHIM HOT
+                                <i class="fa-solid fa-fire"></i>&nbsp;&nbsp;PHIM HOT
                             </a>
                         </li>
                         <li class="propClone">
@@ -173,52 +173,60 @@
 
 
 
-    <div id="section-footer">
-        <div class="container">
-            <div class="contact-info">
-                <h3>Vật Liệu Xây Dựng TQH </h3>
-                <p>Địa chỉ: Trường ĐH Nông Lâm TP. HCM</p>
-                <p>Điện thoại: 0314 597 812</p>
-                <p>Hotline: 0905 090 252</p>
-                <p>Email: 22130098@st.hcmuaf.edu.vn</p>
-            </div>
-            <div class="links">
-                <h3>Liên kết</h3>
-                <ul>
-                    <li><a href="turn-page?action=introduce">Giới thiệu</a></li>
-                    <li><a href="turn-page?action=termAndService">Điều khoản và dịch vụ</a></li>
-                </ul>
-            </div>
-            <div class="social-media">
-                <h3>Mạng xã hội</h3>
-                <ul>
-                    <li> <a href="https://www.facebook.com/profile.php?id=100044411504061"><i
+        <div id="section-footer">
+            <div class="container">
+                <div class="contact-info">
+                    <h3>Quản Lý Phim TQH</h3>
+                    <p>Địa chỉ: Trường ĐH Nông Lâm TP. HCM</p>
+                    <p>Điện thoại: 0314 597 812</p>
+                    <p>Hotline: 0905 090 252</p>
+                    <p>Email: support@quanlyphim.com</p>
+                </div>
+                <div class="links">
+                    <h3>Liên kết</h3>
+                    <ul>
+                        <li><a href="turn-page?action=introduce">Giới thiệu</a></li>
+                        <li><a href="turn-page?action=termAndService">Điều khoản và dịch vụ</a></li>
+                        <li><a href="turn-page?action=moviesList">Danh sách phim</a></li>
+                        <li><a href="turn-page?action=contactUs">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="social-media">
+                    <h3>Mạng xã hội</h3>
+                    <ul>
+                        <li><a href="https://www.facebook.com/quanlyphim"><i
                                 class="fa-brands fa-facebook" style="color: #d1d1d1;"></i></a></li>
-                    <li> <a href="https://www.instagram.com/paq.2012/"><i class="fa-brands fa-instagram-square"
-                                style="color: #d1d1d1;"></i></a></li>
-                    <li> <a href="https://x.com/?lang=vi"><i class="fa-brands fa-twitter"
-                                style="color: #d1d1d1;"></i></a></li>
-                </ul>
+                        <li><a href="https://www.instagram.com/quanlyphim/"><i class="fa-brands fa-instagram-square"
+                                                                               style="color: #d1d1d1;"></i></a></li>
+                        <li><a href="https://twitter.com/quanlyphim"><i class="fa-brands fa-twitter"
+                                                                        style="color: #d1d1d1;"></i></a></li>
+                    </ul>
+                </div>
+                <div class="copyright">
+                    <p>© 2024 Quản Lý Phim TQH: Tất cả quyền được bảo lưu.</p>
+                </div>
             </div>
-            <div class="copyright">
-                <p>© 2024: Tất cả quyền được bảo lưu.</p>
-            </div>
-        </div>
-        <div>
-            <li style="list-style-type: none;"><a href="https://zaloweb.me/" target="_blank" rel="noopener"><i
-                        class="fa-solid fa-phone call" style="color: #02bc15d1;"></i></a></li>
-        </div>
-        <div>
-            <li style="list-style-type: none;"><a href="https://www.instagram.com/paq.2012/" target="_blank" rel="noopener"><i
-                        class="fab fa-instagram icon" style="color: #f12020;"></i></a></li>
-        </div>
-        <div id="fb">
-            <li style="list-style-type: none;"><a href="https://www.facebook.com/profile.php?id=100044411504061"
-                    target="_blank" rel="noopener"><i class="fa-brands fa-facebook-square icon" style="color: #0911ff;"></i></a></li>
-        </div>
-        <button id="backToTop" title="Quay về đầu trang">⬆</button>
 
-    </div>
+            <div>
+                <li style="list-style-type: none;">
+                    <a href="tel:0314597812" target="_blank" rel="noopener"><i class="fa-solid fa-phone call"
+                                                                               style="color: #02bc15d1;"></i></a>
+                </li>
+            </div>
+            <div>
+                <li style="list-style-type: none;">
+                    <a href="https://www.instagram.com/quanlyphim/" target="_blank" rel="noopener"><i class="fab fa-instagram icon"
+                                                                                                      style="color: #f12020;"></i></a>
+                </li>
+            </div>
+            <div id="fb">
+                <li style="list-style-type: none;">
+                    <a href="https://www.facebook.com/quanlyphim" target="_blank" rel="noopener"><i
+                            class="fa-brands fa-facebook-square icon" style="color: #0911ff;"></i></a>
+                </li>
+            </div>
+            <button id="backToTop" title="Quay về đầu trang">⬆</button>
+        </div>
     <script src="${pageContext.request.contextPath}/users/js/login-signup.js"></script>
     <script src="${pageContext.request.contextPath}/users/js/scripts.js" defer></script>
     <script src="${pageContext.request.contextPath}/users/js/reset-password.js"></script>

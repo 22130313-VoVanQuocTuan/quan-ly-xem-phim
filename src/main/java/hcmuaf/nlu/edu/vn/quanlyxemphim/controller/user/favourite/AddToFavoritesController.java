@@ -30,7 +30,7 @@ public class AddToFavoritesController extends HttpServlet {
                 favouriteService.addToFavorites(movieId, user.getId());
 
                 // Chuyển hướng về trang danh sách yêu thích hoặc thông báo thành công
-                response.sendRedirect(request.getContextPath()+"/favourite.jsp"); // Hoặc redirect đến trang yêu thích
+                response.sendRedirect(request.getContextPath()+"/favorites"); // Hoặc redirect đến trang yêu thích
 
         } else {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID bộ phim không hợp lệ.");

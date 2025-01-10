@@ -76,11 +76,11 @@
                     </div>
                     <div class="cart">
                         <div class="cart-wrapper">
-                            <!-- Giỏ hàng -->
-                            <a href="favorite-items" style="color: #ff0000">
+                            <!-- Yêu thích -->
+                            <a href="favorites" style="color: #ff0000">
                                 <i class="fas fa-heart"></i>
                             </a>
-                            <span class="cart-count" id="cart-count">${sessionScope.cartItemCount}</span>
+                            <span class="cart-count" id="cart-count">${sessionScope.favoriteCount}</span>
                         </div>
 
                     </div>
@@ -108,12 +108,12 @@
 
                     <li class="propClone">
                         <a href="product?type=new">
-                            <i class="fa-brands fa-product-hunt"></i>&nbsp;&nbsp;PHIM MỚI
+                            <i class="fa-solid fa-film"></i>&nbsp;&nbsp;PHIM MỚI
                         </a>
                     </li>
                     <li class="propClone">
                         <a href="product?type=hot">
-                            <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;PHIM HOT
+                            <i class="fa-solid fa-fire"></i>&nbsp;&nbsp;PHIM HOT
                         </a>
                     </li>
                     <li class="propClone">

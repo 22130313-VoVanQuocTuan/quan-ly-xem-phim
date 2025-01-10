@@ -21,24 +21,25 @@ public class FavoritesController extends HttpServlet {
         HttpSession session = request.getSession();
         Users user = (Users) session.getAttribute("user");  // Lấy đối tượng User từ session
         String action = request.getParameter("action");
-        String movieId = request.getParameter("movieId");
+        String movieId = request.getParameter("id");
         FavouriteService favouriteService = new FavouriteService();
 
-        if(action.equals("remove")){
+        // Kiểm tra xem action có phải là "remove" không
+        if (action != null && action.equals("remove") && movieId != null) {
+            // Xóa phim khỏi danh sách yêu thích
             favouriteService.removeFavorite(user.getId(), movieId);
-
         }
-        // Lấy danh sách phim yêu thích từ DAO
 
-            List<Movie> favoriteMovies = favouriteService.getFavoritesByUserId(user.getId());
+        // Lấy lại danh sách phim yêu thích
+        List<Movie> favoriteMovies = favouriteService.getFavoritesByUserId(user.getId());
 
-            // Gửi danh sách phim yêu thích lên trang JSP
-            request.setAttribute("favoriteMovies", favoriteMovies);
+        // Gửi danh sách phim yêu thích đã cập nhật lên trang JSP
+        request.setAttribute("favoriteMovies", favoriteMovies);
 
-            // Chuyển hướng tới trang yêu thích
-            RequestDispatcher dispatcher = request.getRequestDispatcher("users/page/favorites.jsp");
-            dispatcher.forward(request, response);
-        }
+        // Chuyển hướng tới trang yêu thích
+        RequestDispatcher dispatcher = request.getRequestDispatcher("users/page/favourite.jsp");
+        dispatcher.forward(request, response);
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
