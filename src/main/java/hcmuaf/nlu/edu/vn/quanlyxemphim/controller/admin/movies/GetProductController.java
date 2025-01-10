@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "GetProductController", value = "/products-list")
+@WebServlet(name = "GetProductController", value = "/movies-list")
 public class GetProductController extends HttpServlet {
     private final MovieService movieService;
 

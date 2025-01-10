@@ -7,15 +7,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie</title>
+    <title>Vật Liệu Xây Dựng TQH </title>
 </head>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4-beta3/css/all.min.css"/>
 <link rel="stylesheet" href="<c:url value="/users/css/home.css"/>">
-<link rel="stylesheet" href="<c:url value="/users/css/product.css"/>">
-<link rel="stylesheet" href="<c:url value="/users/css/home.css"/>">
-<link rel="stylesheet" href="<c:url value="/users/css/product.css"/>">
+<link rel="stylesheet" href="<c:url value="/users/css/product-detail.css"/>">
+
 
 <body>
 <div id="section-header1">
@@ -27,11 +26,11 @@
                 </p>
             </div>
             <div class="top-right">
-                       <span id="user-greeting" style="display: none; color: #ffffff;">
+                <span id="user-greeting" style="display: none; color: #ffffff;">
                            Xin chào,  <span
-                               id="username">${sessionScope.user.username != null ? sessionScope.user.username : ''}</span>!</span>
+                        id="username">${sessionScope.user.username != null ? sessionScope.user.username : ''}</span>!</span>
 
-                <form action="informationCustomer" method="get">
+                <form action="informationCustomer" method="post">
                     <button type="submit" class="account-link" id="signup-link"
                             style="display: none;">
                         <i class="fas fa-user-circle"></i> Tài khoản
@@ -48,7 +47,6 @@
                             style="display: none;"><span>Đăng Xuất</span></button>
                 </form>
             </div>
-
         </div>
 
     </div>
@@ -59,7 +57,9 @@
             <div class="menu">
                 <!-- Logo bên trái -->
                 <div class="logo">
-                    <a href="home-page"><img src="https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-cinema-reel-icon-simple-vector-png-image_4849780.png" alt="Logo"></a>
+                    <a href="home-page"><img
+                            src="https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-cinema-reel-icon-simple-vector-png-image_4849780.png"
+                            alt="Logo"></a>
                 </div>
 
                 <!-- Thanh tìm kiếm ở giữa -->
@@ -134,41 +134,68 @@
         </div>
     </div>
 </div>
-<div class="conten">
-    <!--conten_right-->
-    <div class="right">
-        <h1>Danh sách các bộ phim</h1>
-        <div class="row ps-5" id="product-list">
-            <c:forEach var="movie" items="${movies}">
-                <div class="product-one-content-item">
-                    <div class="img-product">
-                        <a href="product-detail?id=${movie.id}">
-                            <img src="${movie.posterUrl}" alt="${movie.title}">
-                        </a>
-                    </div>
-                    <div class="product-title">
-                        <div class="name-product">
-                            <a href="product-detail?id=${movie.id}">${movie.title}</a>
-                        </div>
-                        <div class="product-price">
-                            <li>Thể loại: ${movie.genre}</li>
-                            <li>Thời lượng: ${movie.duration} phút</li>
-                            <a href="add-cart?id=${movie.id}" class="add-to-cart">Thêm vào yêu thích</a>
-                        </div>
+
+<div id="section-content-1">
+    <div class="product-details">
+        <!-- Hình ảnh sản phẩm -->
+        <div class="product-image">
+            <img src="${movie.posterUrl}" alt="${movie.title}"/>
+            <div class="review-movie">
+                <div class="review">
+                    <h2>Đánh giá</h2>
+                    <form id="commentform" class="comment-form" action="create-rating" method="post">
+                        <input type="hidden" name="movieId" value="${movie.id}">
+                        <input type="hidden" name="userId" value="${sessionScope.user.id}">
+                        </input>
+                        <textarea name="content" rows="3" placeholder="Ý kiến của bạn..." required></textarea>
+                        <c:if test="${not empty rating}">
+                            <p style="color: red;">${rating}</p> <!-- Hiển thị lỗi nếu có -->
+                        </c:if>
+                        <button type="submit">Gửi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thông tin sản phẩm -->
+
+        <div class="product-info">
+            <h2 id="title-movie" class="movie-title">Tên Phim: ${movie.title}</h2>
+            <p class="movie-description">
+                ${movie.description}
+            </p>
+            <p><strong>Thể loại: </strong>${movie.genre}</p>
+            <p><strong>Thời lượng: </strong>${movie.duration} phút</p>
+            <p><strong>Ngày phát hành: </strong><fmt:formatDate value="${movie.releaseDate}" pattern="dd/MM/yyyy"/></p>
+        </div>
+    </div>
+</div>
+
+
+<div id="section-content-2">
+    <div class="products-similar">
+        <div class="list-similar">
+            <h3>Đặt vé và chọn khung giờ</h3>
+            <c:forEach var="room" items="${rooms}">
+                <div class="room-info">
+                    <h4>Phòng chiếu: ${room.name}</h4>
+                    <div class="time-slots">
+                        <h5>Khung giờ chiếu:</h5>
+                        <c:forEach var="timeSlot" items="${timeSlots}">
+                            <c:if test="${timeSlot.roomId == room.id}">
+                                <a
+                                   href="reservation?roomId=${room.id}&timeSlotId=${timeSlot.id}&movieId=${movie.id}&startTime=${timeSlot.startTime}">
+                                    <button style="cursor: pointer; background-color: #d7ff00;border-radius: 10px;">${timeSlot.startTime}</button>
+                                </a>
+                            </c:if>
+                        </c:forEach>
                     </div>
                 </div>
             </c:forEach>
         </div>
-        <!-- pagination -->
-        <div id="pagination" class="pagination">
-            <button id="prev" onclick="changePage(-1)">
-                <<
-            </button>
-            <span id="page-info"></span>
-            <button id="next" onclick="changePage(1)">>></button>
-        </div>
     </div>
 </div>
+
 <div id="section-footer">
     <div class="container">
         <div class="contact-info">
@@ -214,11 +241,12 @@
                 class="fa-brands fa-facebook-square icon" style="color: #0911ff;"></i></a></li>
     </div>
     <button id="backToTop" title="Quay về đầu trang">⬆</button>
+
 </div>
 
-<script src="${pageContext.request.contextPath}/users/js/login-signup.js"></script>
-<script src="${pageContext.request.contextPath}/users/js/product.js"></script>
-<script src="${pageContext.request.contextPath}/users/js/scripts.js"></script>
-<script src="${pageContext.request.contextPath}/users/js/home.js"></script>
+
+<script src="<c:url value="/users/js/login-signup.js"/>"></script>
+<script src="<c:url value="/users/js/scripts.js"/>" defer></script>
 </body>
+
 </html>

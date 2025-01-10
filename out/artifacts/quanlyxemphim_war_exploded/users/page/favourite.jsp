@@ -56,14 +56,14 @@
                 <div class="menu">
                     <!-- Logo bên trái -->
                     <div class="logo">
-                        <a href="home-page"><img src="${pageContext.request.contextPath}/users/img/logo.png" alt="Logo"></a>
+                        <a href="home-page"><img src="https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-cinema-reel-icon-simple-vector-png-image_4849780.png" alt="Logo"></a>
                     </div>
 
                     <!-- Thanh tìm kiếm ở giữa -->
                     <form action="product" method="GET">
                         <div class="search-bar">
                             <input type="hidden" name="search" value="true">
-                            <input name="name" type="text" placeholder="Tìm kiếm sản phẩm...">
+                            <input name="name" type="text" placeholder="Tìm kiếm tên phim...">
                             <button type="submit" title="icon"><i class="fa fa-fw fa-search"></i></button>
                         </div>
                     </form>
@@ -77,11 +77,13 @@
                     </div>
                     <div class="cart">
                         <div class="cart-wrapper">
-                            <a href="cart-items">
-                                <i class="fas fa-shopping-cart"></i>
+                            <!-- Giỏ hàng -->
+                            <a href="favorite-items" style="color: #ff0000">
+                                <i class="fas fa-heart"></i>
                             </a>
                             <span class="cart-count" id="cart-count">${sessionScope.cartItemCount}</span>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -91,66 +93,41 @@
                 <button class="menu-toggle"><i class="fa-solid fa-bars"></i> Menu</button>
                 <ul class="nav navbar-nav navbar-center">
                     <li class="propClone">
-                        <span class="none-a"><i class="fa-solid fa-list" style="color: #d0cdcd;"></i> &nbsp;&nbsp; DANH
-                            MỤC SẢN
-                            PHẨM</span>
+                    <span class="none-a"><i class="fa-solid fa-list"
+                                            style="color: #d0cdcd;"></i> &nbsp;&nbsp;THỂ LOẠI</span>
                         <ul class="items">
-                            <li><a href="/tqh/product-category?categoryId=1">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;GẠCH XÂY
-                                DỰNG</a></li>
-                            <li><a href="/tqh/product-category?categoryId=2">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;XI MĂNG VÀ
-                                VỮA</a></li>
-                            <li><a href="/tqh/product-category?categoryId=3">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;CÁT, ĐÁ VÀ
-                                SỎI</a></li>
-                            <li><a href="/tqh/product-category?categoryId=4">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;THÉP VÀ
-                                SẮT</a></li>
-                            <li><a href="/tqh/product-category?categoryId=5">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;GỖ VÀ VẬT
-                                LIỆU GỖ</a></li>
-                            <li><a href="/tqh/product-category?categoryId=6">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;SƠN VÀ PHỤ
-                                GIA</a></li>
-                            <li><a href="/tqh/product-category?categoryId=7">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;NGÓI VÀ TẤM
-                                LỢP</a></li>
-                            <li><a href="/tqh/product-category?categoryId=8">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;ỐNG NƯỚC VÀ
-                                PHỤ KIỆN</a></li>
-                            <li><a href="/tqh/product-category?categoryId=9">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;THIẾT BỊ
-                                ĐIỆN NƯỚC</a></li>
+                            <li><a href="product?type=Action">&nbsp;&nbsp;<i
+                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HÀNH ĐỘNG</a></li>
+                            <li><a href="product?type=Comedy">&nbsp;&nbsp;<i
+                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HÀI</a></li>
+                            <li><a href="product?type=Romance">&nbsp;&nbsp;<i
+                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;TÌNH CẢM</a></li>
                         </ul>
                     </li>
-                    <li class="propClone"><a href="home-page"><i class="fa-solid fa-house"></i>&nbsp;&nbsp; TRANG CHỦ
-                        </a></li>
-                    <li class="propClone"><a href="product"><i class="fa-brands fa-product-hunt"></i>
-                            &nbsp;&nbsp;SẢN PHẨM</a>
+                    <li class="propClone"><a href="home-page"><i class="fa-solid fa-house"></i>&nbsp;&nbsp; TRANG CHỦ </a>
                     </li>
-                    <li class="propClone"> <a href="cart-items"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp; GIỎ
-                            HÀNG</a>
+
+                    <li class="propClone">
+                        <a href="product?type=new">
+                            <i class="fa-brands fa-product-hunt"></i>&nbsp;&nbsp;PHIM MỚI
+                        </a>
+                    </li>
+                    <li class="propClone">
+                        <a href="product?type=hot">
+                            <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;PHIM HOT
+                        </a>
                     </li>
                     <li class="propClone">
                         <span class="none-a"> <i class="fa-solid fa-book"></i> &nbsp;&nbsp; HƯỚNG DẪN </span>
                         <ul class="items">
                             <li><a href="turn-page?action=buyingHelp">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HƯỚNG DẪN
-                                MUA HÀNG</a>
-                            </li>
-                            <li><a href="turn-page?action=productUnit">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;BẢNG ĐƠN VỊ SẢN PHẨM</a>
-                            </li>
+                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HƯỚNG DẪN ĐẶT PHIM</a>
 
-                            <li><a href="turn-page?action=termAndService">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;ĐIỀU KHOẢN
-                                VÀ DỊCH VỤ</a>
-                            </li>
                         </ul>
                     </li>
 
                 </ul>
+
             </div>
         </div>
     </div>
@@ -161,12 +138,9 @@
                 <table class="cart-table">
                     <thead style="border-bottom: 2px solid #9e0000;">
                         <tr>
-                            <th>Tên sản phẩm</th>
+                            <th>Tên phim</th>
                             <th>Hình ảnh</th>
-                            <th>Số lượng</th>
-                            <th>Giá</th>
-                            <th>Giá giảm</th>
-                            <th>Tổng giá</th>
+                            <th>Thời gian chiếu</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -176,13 +150,6 @@
                                 <tr class="cart-item" data-id="${item.id}">
                                 <td>${item.name}</td>
                                 <td><img src="${item.imageUrl}" alt="${item.name}" width="50" height="50"></td>
-                                <td>
-                                    <div class="quantity">
-                                        <button class="qty-btn minus-btn"><a style="text-decoration: none " href="update-cart?id=${item.id}&quantity=${item.quantity - 1}">-</a></button>
-                                        <input title="input" type="number" value="${item.quantity}" class="qty-input" min="1" />
-                                        <button class="qty-btn plus-btn"><a style="text-decoration: none " href="update-cart?id=${item.id}&quantity=${item.quantity + 1}">+</a></button>
-                                    </div>
-                                </td>
                                 <td><fmt:formatNumber value=" ${item.price}" type="number" groupingUsed="true"/>₫</td>
                                 <td><fmt:formatNumber value=" ${item.discountAmount}" type="number" groupingUsed="true"/>₫</td>
                                 <td><fmt:formatNumber value=" ${item.totalPrice}" type="number" groupingUsed="true"/>₫</td>
@@ -195,59 +162,10 @@
 
                 </table>
                 <div class="cart-buttons">
-                    <a href="product"><button class="continue-btn">← Tiếp tục xem sản
-                            phẩm</button></a>
+                    <a href="product"><button class="continue-btn">← Tiếp tục xem phim</button></a>
                 </div>
             </div>
-
-
-            <div class="cart-right">
-                <h2>Tổng Sản Phẩm</h2>
-                <div class="cart-summary">
-                    <div class="summary-item">
-                        <span>Tạm tính:</span>
-                        <span id="subtotal"><fmt:formatNumber value=" ${sessionScope.totalPrice}" type="number" groupingUsed="true"/>₫</span>
-                    </div>
-                    <div class="summary-item">
-                        <span>Phí vận chuyển:</span>
-                        <span id="vat"><fmt:formatNumber value=" ${sessionScope.totalShippingFee}" type="number" groupingUsed="true"/>₫</span>
-                    </div>
-                </div>
-                <div class="summary-item total">
-                    <span>Tổng cộng:</span>
-                    <span id="total"><fmt:formatNumber value=" ${sessionScope.totalFinalPrice} " type="number" groupingUsed="true"/>₫</span>
-                </div>
-                <c:if test="${not empty message}">
-                    <div class="alert alert-danger">${message}</div>
-                </c:if>
-                <a href="confirmation"><button class="checkout-btn">Tiến hành thanh toán</button></a>
-
-                <div class="voucher">
-                    <label for="voucher">Phiếu ưu đãi</label>
-                    <form action="voucher" method="get">
-                    <input type="text" name="voucher" id="voucher" placeholder="Mã ưu đãi" />
-                    <button type="submit" id="apply-btn" class="apply-btn">
-                        Áp dụng
-                    </button>
-                        <div id="error-message" style="color: red; font-size: 10px;">
-                            <c:if test="${not empty error_code}">
-                                ${error_code}
-                            </c:if>
-                        </div>
-                    </form>
-
-
-                    <div class="help">
-                        <p><i style="font-size: 15px;" class="fas fa-question-circle spinning-icon"></i></p>
-                        <p>Nhập mã ưu đãi nếu có.</p>
-                        <p>Không có mã vui lòng bỏ qua và tiến hành thanh toán.</p>
-                        <p>Mọi thắc mắc xin vui lòng liên hệ với hotline: </p>
-                        <p class="blinking-text"
-                            style="color: #ff0000; font-size: 15px; font-weight: bold; margin-top: 5px;"> 0386394258</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+          </div>
     </div>
 
     <div id="section-footer">

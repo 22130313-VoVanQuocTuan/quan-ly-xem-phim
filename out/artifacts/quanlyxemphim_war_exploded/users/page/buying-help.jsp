@@ -55,14 +55,14 @@
                 <div class="menu">
                     <!-- Logo bên trái -->
                     <div class="logo">
-                        <a href="home-page"><img src="${pageContext.request.contextPath}/users/img/logo.png" alt="Logo"></a>
+                        <a href="home-page"><img src="https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-cinema-reel-icon-simple-vector-png-image_4849780.png" alt="Logo"></a>
                     </div>
 
                     <!-- Thanh tìm kiếm ở giữa -->
                     <form action="product" method="GET">
                         <div class="search-bar">
                             <input type="hidden" name="search" value="true">
-                            <input name="name" type="text" placeholder="Tìm kiếm sản phẩm...">
+                            <input name="name" type="text" placeholder="Tìm kiếm tên phim...">
                             <button type="submit" title="icon"><i class="fa fa-fw fa-search"></i></button>
                         </div>
                     </form>
@@ -76,11 +76,13 @@
                     </div>
                     <div class="cart">
                         <div class="cart-wrapper">
-                            <a href="cart-items">
-                                <i class="fas fa-shopping-cart"></i>
+                            <!-- Giỏ hàng -->
+                            <a href="favorite-items" style="color: #ff0000">
+                                <i class="fas fa-heart"></i>
                             </a>
-                            <span class="cart-count" id="cart-count">0</span>
+                            <span class="cart-count" id="cart-count">${sessionScope.cartItemCount}</span>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -90,105 +92,70 @@
                 <button class="menu-toggle"><i class="fa-solid fa-bars"></i> Menu</button>
                 <ul class="nav navbar-nav navbar-center">
                     <li class="propClone">
-                        <span class="none-a"><i class="fa-solid fa-list" style="color: #d0cdcd;"></i> &nbsp;&nbsp; DANH
-                            MỤC SẢN
-                            PHẨM</span>
+                    <span class="none-a"><i class="fa-solid fa-list"
+                                            style="color: #d0cdcd;"></i> &nbsp;&nbsp;THỂ LOẠI</span>
                         <ul class="items">
-                            <li><a href="/tqh/product-category?categoryId=1">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;GẠCH XÂY
-                                DỰNG</a></li>
-                            <li><a href="/tqh/product-category?categoryId=2">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;XI MĂNG VÀ
-                                VỮA</a></li>
-                            <li><a href="/tqh/product-category?categoryId=3">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;CÁT, ĐÁ VÀ
-                                SỎI</a></li>
-                            <li><a href="/tqh/product-category?categoryId=4">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;THÉP VÀ
-                                SẮT</a></li>
-                            <li><a href="/tqh/product-category?categoryId=5">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;GỖ VÀ VẬT
-                                LIỆU GỖ</a></li>
-                            <li><a href="/tqh/product-category?categoryId=6">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;SƠN VÀ PHỤ
-                                GIA</a></li>
-                            <li><a href="/tqh/product-category?categoryId=7">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;NGÓI VÀ TẤM
-                                LỢP</a></li>
-                            <li><a href="/tqh/product-category?categoryId=8">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;ỐNG NƯỚC VÀ
-                                PHỤ KIỆN</a></li>
-                            <li><a href="/tqh/product-category?categoryId=9">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;THIẾT BỊ
-                                ĐIỆN NƯỚC</a></li>
+                            <li><a href="product?type=Action">&nbsp;&nbsp;<i
+                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HÀNH ĐỘNG</a></li>
+                            <li><a href="product?type=Comedy">&nbsp;&nbsp;<i
+                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HÀI</a></li>
+                            <li><a href="product?type=Romance">&nbsp;&nbsp;<i
+                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;TÌNH CẢM</a></li>
                         </ul>
                     </li>
-                    <li class="propClone"><a href="home-page"><i class="fa-solid fa-house"></i>&nbsp;&nbsp; TRANG CHỦ
-                    </a></li>
-                    <li class="propClone"><a href="product"><i class="fa-brands fa-product-hunt"></i>
-                        &nbsp;&nbsp;SẢN PHẨM</a>
+                    <li class="propClone"><a href="home-page"><i class="fa-solid fa-house"></i>&nbsp;&nbsp; TRANG CHỦ </a>
                     </li>
-                    <li class="propClone"> <a href="cart-items"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp; GIỎ
-                        HÀNG</a>
+
+                    <li class="propClone">
+                        <a href="product?type=new">
+                            <i class="fa-brands fa-product-hunt"></i>&nbsp;&nbsp;PHIM MỚI
+                        </a>
+                    </li>
+                    <li class="propClone">
+                        <a href="product?type=hot">
+                            <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;PHIM HOT
+                        </a>
                     </li>
                     <li class="propClone">
                         <span class="none-a"> <i class="fa-solid fa-book"></i> &nbsp;&nbsp; HƯỚNG DẪN </span>
                         <ul class="items">
                             <li><a href="turn-page?action=buyingHelp">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HƯỚNG DẪN
-                                MUA HÀNG</a>
-                            </li>
-                            <li><a href="turn-page?action=productUnit">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;BẢNG ĐƠN VỊ SẢN PHẨM</a>
-                            </li>
+                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HƯỚNG DẪN ĐẶT PHIM</a>
 
-                            <li><a href="turn-page?action=termAndService">&nbsp;&nbsp;<i
-                                    class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;ĐIỀU KHOẢN
-                                VÀ DỊCH VỤ</a>
-                            </li>
                         </ul>
                     </li>
 
                 </ul>
+
             </div>
         </div>
     </div>
 
     <div id="section-content-1">
         <div class="guide-container">
-            <h2>Hướng Dẫn Mua Hàng</h2>
-            <p>Chào mừng bạn đến với cửa hàng trực tuyến của chúng tôi! Dưới đây là hướng dẫn từng bước để bạn có thể dễ
-                dàng mua sắm các vật liệu xây dựng mà mình cần.</p>
+            <h2>Hướng Dẫn Đặt Vé Phim</h2>
+            <p>Chào mừng bạn đến với dịch vụ đặt vé trực tuyến của chúng tôi! Dưới đây là hướng dẫn từng bước để bạn có thể dễ dàng đặt vé xem phim mà mình yêu thích.</p>
 
-            <h3>Bước 1: Tìm Kiếm Sản Phẩm</h3>
-            <p>Sử dụng thanh tìm kiếm ở trên cùng để nhập tên sản phẩm bạn muốn tìm. Bạn cũng có thể duyệt qua các danh
-                mục sản phẩm để tìm kiếm dễ dàng hơn.</p>
+            <h3>Bước 1: Tìm Kiếm Phim</h3>
+            <p>Sử dụng thanh tìm kiếm ở trên cùng để nhập tên phim bạn muốn xem. Bạn cũng có thể duyệt qua các thể loại phim để tìm kiếm dễ dàng hơn.</p>
 
-            <h3>Bước 2: Chọn Sản Phẩm</h3>
-            <p>Khi bạn đã tìm thấy sản phẩm mong muốn, hãy nhấp vào nó để xem chi tiết. Tại đây, bạn có thể thêm sản
-                phẩm đó vào giỏ hàng.</p>
+            <h3>Bước 2: Chọn Phim</h3>
+            <p>Khi bạn đã tìm thấy phim mong muốn, hãy nhấp vào poster hoặc tên phim để xem chi tiết về lịch chiếu và phòng chiếu.</p>
 
-            <h3>Bước 3: Thêm Vào Giỏ Hàng</h3>
-            <p>Nhấp vào nút "Thêm vào giỏ hàng" để lưu sản phẩm vào giỏ hàng của bạn. Bạn có thể tiếp tục mua sắm hoặc
-                đi đến giỏ hàng để xem lại sản phẩm đã chọn.</p>
+            <h3>Bước 3: Chọn Lịch Chiếu và Phòng Chiếu</h3>
+            <p>Chọn ngày và giờ chiếu mà bạn muốn xem, và xác nhận phòng chiếu phù hợp với thời gian bạn chọn.</p>
 
-            <h3>Bước 4: Kiểm Tra Giỏ Hàng</h3>
-            <p>Khi bạn đã sẵn sàng để thanh toán, hãy vào giỏ hàng bằng cách nhấp vào biểu tượng giỏ hàng ở góc trên bên
-                phải, hoặc trên thanh hiển thị của chúng tôi. Tại đây, bạn có thể kiểm tra lại các sản phẩm và số lượng.
-            </p>
+            <h3>Bước 4: Chọn Ghế</h3>
+            <p>Sau khi chọn lịch chiếu và phòng chiếu, bạn sẽ được yêu cầu chọn ghế. Chúng tôi hiển thị sơ đồ phòng chiếu, bạn chỉ cần nhấp vào các ghế trống để chọn những ghế mình thích.</p>
 
             <h3>Bước 5: Thanh Toán</h3>
-            <p>Nhấp vào nút "Thanh toán" để tiến hành. Bạn sẽ được yêu cầu nhập thông tin giao hàng và chọn phương thức
-                thanh toán. Hãy chắc chắn rằng tất cả thông tin là chính xác trước khi xác nhận đơn hàng.</p>
+            <p>Nhấp vào nút "Thanh toán" để tiến hành. Bạn sẽ được yêu cầu nhập thông tin thanh toán và phương thức thanh toán. Hãy chắc chắn rằng tất cả thông tin là chính xác trước khi xác nhận đơn hàng.</p>
+            <h3>Bước 6: Kiểm tra email để xác nhận thanh toán</h3>
+            <p>Sau khi thanh toán thành công, bạn sẽ nhận được thông báo xác nhận qua email cùng với vé điện tử. Đừng quên mang theo giấy tờ tùy thân và vé điện tử khi đến rạp xem phim.</p>
 
-            <h3>Bước 6: Nhận Đơn Hàng</h3>
-            <p>Sau khi thanh toán TQH, bạn sẽ nhận được thông báo xác nhận qua email. Đơn hàng của bạn sẽ được xử
-                lý và giao hàng trong thời gian sớm nhất.</p>
+            <p>Cảm ơn bạn đã chọn đặt vé trực tuyến tại rạp của chúng tôi! Nếu bạn có bất kỳ câu hỏi nào, đừng ngần ngại liên hệ với chúng tôi qua hotline trên thanh hiển thị góc bên phải.</p>
 
-            <p>Cảm ơn bạn đã chọn mua sắm tại cửa hàng của chúng tôi! Nếu bạn có bất kỳ câu hỏi nào, đừng ngần ngại liên
-                hệ với chúng tôi qua hotline trên thanh hiển thị góc bên phải.</p>
-        </div>
-
+       </div>
     </div>
 
     <div id="section-footer">

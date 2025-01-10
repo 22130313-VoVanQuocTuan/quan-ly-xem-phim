@@ -88,19 +88,18 @@ public class MovieDao {
 
 
     // Phương thức cập nhật sản phẩm trong cơ sở dữ liệu
-    // Cập nhật thông tin phim
+// Cập nhật thông tin phim
     public boolean updateMovie(int id, Movie movie) {
-        String sql = "UPDATE movies SET title = ?, description = ?, genre = ?, releaseDate = ?, posterUrl = ?,  duration = ?, updatedAt = ? WHERE id = ?";
+        String sql = "UPDATE movies SET title = ?, description = ?, genre = ?, posterUrl = ?, duration = ?, ticketPrice = ?, updatedAt = NOW() WHERE id = ?";
         try (PreparedStatement stmt = dbConnect.preparedStatement(sql)) {
             // Gán giá trị cho các tham số trong câu lệnh SQL
             stmt.setString(1, movie.getTitle());
             stmt.setString(2, movie.getDescription());
             stmt.setString(3, movie.getGenre());
-            stmt.setTimestamp(4, movie.getReleaseDate());
-            stmt.setString(5, movie.getPosterUrl());
-            stmt.setInt(7, movie.getDuration());
-            stmt.setTimestamp(8, new Timestamp(System.currentTimeMillis())); // Cập nhật thời gian hiện tại
-            stmt.setInt(9, id); // Gán ID của phim cần cập nhật
+            stmt.setString(4, movie.getPosterUrl());
+            stmt.setInt(5, movie.getDuration());
+            stmt.setDouble(6, movie.getTicketPrice());
+            stmt.setInt(7, id);
 
             int rowsUpdated = stmt.executeUpdate(); // Thực hiện câu lệnh SQL
             return rowsUpdated > 0; // Trả về true nếu có ít nhất 1 dòng được cập nhật
@@ -109,6 +108,7 @@ public class MovieDao {
         }
         return false; // Trả về false nếu xảy ra lỗi hoặc không có dòng nào được cập nhật
     }
+
 
 
     // Xóa phim theo ID

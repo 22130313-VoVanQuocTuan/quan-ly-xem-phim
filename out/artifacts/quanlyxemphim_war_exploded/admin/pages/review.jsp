@@ -38,16 +38,16 @@
         <div class="navigation">
             <ul>
                 <li>
-                    <a href="index.html">
+                    <a href="home">
                         <span class="icon">
-                            <img src="${pageContext.request.contextPath}/users/img/logo.png" alt="">
+                           <img src="${pageContext.request.contextPath}/users/img/logo.png" alt="">
                         </span>
-                        <span class="title">Bán Vật Liệu Xây Dựng </span>
+                        <span class="title">Movie</span>
                     </a>
                 </li>
 
                 <li>
-                    <a href="index.html">
+                    <a href="home">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -65,7 +65,7 @@
                 </li>
 
                 <li>
-                    <a href="products-list">
+                    <a href="movies-list">
                         <span class="icon">
                             <ion-icon name="cube-outline"></ion-icon>
                         </span>
@@ -73,29 +73,11 @@
                     </a>
                 </li>
                 <li>
-                    <a href="order">
+                    <a href="reservationsLists">
                         <span class="icon">
                             <ion-icon name="receipt-outline"></ion-icon>
                         </span>
                         <span class="title">Hóa đơn</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="promotional-list">
-                        <span class="icon">
-                            <ion-icon name="pricetag-outline"></ion-icon>
-                        </span>
-                        <span class="title">Mã giảm giá</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="category">
-                        <span class="icon">
-                            <ion-icon name="list-outline"></ion-icon>
-                        </span>
-                        <span class="title">Danh mục</span>
                     </a>
                 </li>
                 <li>
@@ -103,10 +85,9 @@
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
-                        <span class="title">Review</span>
+                        <span class="title">Đánh giá</span>
                     </a>
                 </li>
-
 
                 <li>
                     <a href="logout">

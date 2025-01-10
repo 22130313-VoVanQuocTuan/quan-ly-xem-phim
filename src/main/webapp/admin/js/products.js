@@ -25,7 +25,7 @@ deleteBtns.forEach(deleteBtn => {
 // xác nhận xóa
 confirmDeleteBtn.addEventListener('click', () => {
     if (productIdToDelete) {
-        let url = `/tqh/delete-product?id=${productIdToDelete}`;  // Gửi yêu cầu xóa đến controller với id sản phẩm
+        let url = `/quanlyxemphim_war_exploded/delete-movie?id=${productIdToDelete}`;  // Gửi yêu cầu xóa đến controller với id sản phẩm
         if (allParam) {
             url += `&all=${allParam}`;  // Thêm tham số all vào URL nếu có
         }

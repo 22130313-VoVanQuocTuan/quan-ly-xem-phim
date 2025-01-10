@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', function () {
         button.addEventListener('click', function(e) {
             e.preventDefault(); // Ngăn chặn hành động mặc định (như điều hướng lại trang)
             showModal('delete-modal');
-            const orderId = this.getAttribute('data-id'); // Lấy ID từ thuộc tính data-id
-            const url = `delete-order?id=${orderId}`; // Đường dẫn xóa tài khoản kèm ID
+            const reservationsId = this.getAttribute('data-id'); // Lấy ID từ thuộc tính data-id
+            const url = `reservationsLists?id=${reservationsId}&action=remove`; // Đường dẫn xóa tài khoản kèm ID
 
             confirmDeleteButton.addEventListener('click', function() {
                 window.location.href = url; // Chuyển hướng đến URL xóa tài khoản

@@ -126,14 +126,14 @@
             <div class="menu">
                 <!-- Logo bên trái -->
                 <div class="logo">
-                    <a href="home-page"><img src="${pageContext.request.contextPath}/users/img/logo.png" alt="Logo"></a>
+                    <a href="home-page"><img src="https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-cinema-reel-icon-simple-vector-png-image_4849780.png" alt="Logo"></a>
                 </div>
 
                 <!-- Thanh tìm kiếm ở giữa -->
                 <form action="product" method="GET">
                     <div class="search-bar">
                         <input type="hidden" name="search" value="true">
-                        <input name="name" type="text" placeholder="Tìm kiếm sản phẩm...">
+                        <input name="name" type="text" placeholder="Tìm kiếm tên phim...">
                         <button type="submit" title="icon"><i class="fa fa-fw fa-search"></i></button>
                     </div>
                 </form>
@@ -147,11 +147,13 @@
                 </div>
                 <div class="cart">
                     <div class="cart-wrapper">
-                        <a href="cart-items">
-                            <i class="fas fa-shopping-cart"></i>
+                        <!-- Giỏ hàng -->
+                        <a href="favorite-items" style="color: #ff0000">
+                            <i class="fas fa-heart"></i>
                         </a>
                         <span class="cart-count" id="cart-count">${sessionScope.cartItemCount}</span>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -161,66 +163,41 @@
             <button class="menu-toggle"><i class="fa-solid fa-bars"></i> Menu</button>
             <ul class="nav navbar-nav navbar-center">
                 <li class="propClone">
-                        <span class="none-a"><i class="fa-solid fa-list" style="color: #d0cdcd;"></i> &nbsp;&nbsp; DANH
-                            MỤC SẢN
-                            PHẨM</span>
+                    <span class="none-a"><i class="fa-solid fa-list"
+                                            style="color: #d0cdcd;"></i> &nbsp;&nbsp;THỂ LOẠI</span>
                     <ul class="items">
-                        <li><a href="/tqh/product-category?categoryId=1">&nbsp;&nbsp;<i
-                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;GẠCH XÂY
-                            DỰNG</a></li>
-                        <li><a href="/tqh/product-category?categoryId=2">&nbsp;&nbsp;<i
-                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;XI MĂNG VÀ
-                            VỮA</a></li>
-                        <li><a href="/tqh/product-category?categoryId=3">&nbsp;&nbsp;<i
-                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;CÁT, ĐÁ VÀ
-                            SỎI</a></li>
-                        <li><a href="/tqh/product-category?categoryId=4">&nbsp;&nbsp;<i
-                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;THÉP VÀ
-                            SẮT</a></li>
-                        <li><a href="/tqh/product-category?categoryId=5">&nbsp;&nbsp;<i
-                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;GỖ VÀ VẬT
-                            LIỆU GỖ</a></li>
-                        <li><a href="/tqh/product-category?categoryId=6">&nbsp;&nbsp;<i
-                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;SƠN VÀ PHỤ
-                            GIA</a></li>
-                        <li><a href="/tqh/product-category?categoryId=7">&nbsp;&nbsp;<i
-                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;NGÓI VÀ TẤM
-                            LỢP</a></li>
-                        <li><a href="/tqh/product-category?categoryId=8">&nbsp;&nbsp;<i
-                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;ỐNG NƯỚC VÀ
-                            PHỤ KIỆN</a></li>
-                        <li><a href="/tqh/product-category?categoryId=9">&nbsp;&nbsp;<i
-                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;THIẾT BỊ
-                            ĐIỆN NƯỚC</a></li>
+                        <li><a href="product?type=Action">&nbsp;&nbsp;<i
+                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HÀNH ĐỘNG</a></li>
+                        <li><a href="product?type=Comedy">&nbsp;&nbsp;<i
+                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HÀI</a></li>
+                        <li><a href="product?type=Romance">&nbsp;&nbsp;<i
+                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;TÌNH CẢM</a></li>
                     </ul>
                 </li>
-                <li class="propClone"><a href="home-page"><i class="fa-solid fa-house"></i>&nbsp;&nbsp; TRANG CHỦ
-                </a></li>
-                <li class="propClone"><a href="product"><i class="fa-brands fa-product-hunt"></i>
-                    &nbsp;&nbsp;SẢN PHẨM</a>
+                <li class="propClone"><a href="home-page"><i class="fa-solid fa-house"></i>&nbsp;&nbsp; TRANG CHỦ </a>
                 </li>
-                <li class="propClone"><a href="cart-items"><i class="fas fa-shopping-cart"></i>&nbsp;&nbsp; GIỎ
-                    HÀNG</a>
+
+                <li class="propClone">
+                    <a href="product?type=new">
+                        <i class="fa-brands fa-product-hunt"></i>&nbsp;&nbsp;PHIM MỚI
+                    </a>
+                </li>
+                <li class="propClone">
+                    <a href="product?type=hot">
+                        <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;PHIM HOT
+                    </a>
                 </li>
                 <li class="propClone">
                     <span class="none-a"> <i class="fa-solid fa-book"></i> &nbsp;&nbsp; HƯỚNG DẪN </span>
                     <ul class="items">
                         <li><a href="turn-page?action=buyingHelp">&nbsp;&nbsp;<i
-                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HƯỚNG DẪN
-                            MUA HÀNG</a>
-                        </li>
-                        <li><a href="turn-page?action=productUnit">&nbsp;&nbsp;<i
-                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;BẢNG ĐƠN VỊ SẢN PHẨM</a>
-                        </li>
+                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;HƯỚNG DẪN ĐẶT PHIM</a>
 
-                        <li><a href="turn-page?action=termAndService">&nbsp;&nbsp;<i
-                                class="fa-solid fa-chevron-right"></i>&nbsp;&nbsp;ĐIỀU KHOẢN
-                            VÀ DỊCH VỤ</a>
-                        </li>
                     </ul>
                 </li>
 
             </ul>
+
         </div>
     </div>
 </div>
@@ -236,46 +213,7 @@
             </div>
         </c:if>
         <div class="content">
-            <!-- Đơn hàng gần nhất -->
-            <div class="recent-orders">
-                <h2>Đơn hàng gần nhất</h2>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                        <tr>
-                            <th>Mã đơn hàng</th>
-                            <th>Ngày đặt</th>
-                            <th>Địa chỉ</th>
-                            <th>Tình trạng thanh toán</th>
-                            <th>Chi tiết đơn hàng</th>
-                            <th>Hành động</th>
-                        </tr>
-                        </thead>
-
-                        <tbody>
-                        <c:forEach var="order" items="${orders}">
-                            <tr>
-                                <td>${order.id}</td>
-                                <td>${order.createdAt}</td>
-                                <td>${order.shippingAddress}</td>
-                                <td>${order.paymentStatus}</td>
-                                <td>
-                                    <a href="informationCustomer?orderId=${order.id}" class="view-detail-btn">
-                                        <button>Xem</button>
-                                    </a>
-                                </td>
-                                <td>
-                                    <!-- Nút hủy -->
-                                    <button id="cancel-order-btn" data-order-id="${order.id}">Hủy đơn</button>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <!-- Thông tin khách hàng -->
+           <!-- Thông tin khách hàng -->
             <div class="customer-info">
                 <h2>Thông tin khách hàng</h2>
                 <p><strong>Tên:</strong>${info.fullName}</p>
@@ -303,59 +241,7 @@
         </div>
     </div>
 
-    <!-- Modal Chi tiết đơn hàng -->
-    <div id="orderDetailModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 class="modal-title">Chi tiết đơn hàng</h2>
-            <div id="orderDetailContent">
-                <!-- Thông tin chi tiết -->
-                <table class="order-detail-table">
-                    <thead>
-                    <tr>
-                        <th>Tên sản phẩm</th>
-                        <th>Số lượng</th>
-                        <th>Giá</th>
-                        <th>Giảm giá</th>
-                        <th>Tổng giá</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach var="oi" items="${orderItem}">
-                        <tr>
-                            <td>${oi.productName}</td>
-                            <td>${oi.quantity}</td>
-                            <td>${oi.price}</td>
-                            <td>${oi.discount}</td>
-                            <td>${oi.totalPrice}</td>
-                        </tr>
-                    </c:forEach>
-                    </tbody>
-                </table>
 
-                <div class="order-info">
-                    <p><strong>Mã đơn hàng:</strong> <span class="info-highlight">${orderInfo.id}</span></p>
-                    <p><strong>Tổng tiền:</strong> <span class="info-highlight"><fmt:formatNumber
-                            value="${orderInfo.totalPrice}" type="number"/> ₫</span></p>
-                    <p><strong>Phí giao hàng:</strong> <span class="info-highlight"><fmt:formatNumber
-                            value="${orderInfo.shippingFee}" type="number"/> ₫</span></p>
-                    <p><strong>Số tiền giảm giá:</strong> <span class="info-highlight total-price"><fmt:formatNumber
-                            value="${orderInfo.discountAmount}" type="number"/> ₫</span></p>
-                    <p><strong>Phương thức thanh toán:</strong> <span
-                            class="badge success">${orderInfo.paymentMethod}</span></p>
-                    <p><strong>Trạng thái thanh toán:</strong> <span
-                            class="badge success">${orderInfo.paymentStatus}</span></p>
-                    <p><strong>Địa chỉ:</strong>${orderInfo.shippingAddress}</p>
-                    <p><strong>Số lượng:</strong>${orderInfo.quantity}</p>
-                    <p><strong>Email:</strong>${orderInfo.email}</p>
-                    <p><strong>Người nhận hàng:</strong>${orderInfo.name}</p>
-                    <p><strong>Số điện thoại:</strong>${orderInfo.phoneNumber}</p>
-                    <p><strong>Ghi chú:</strong>${orderInfo.note}</p>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
     <!-- Modal cho chỉnh sửa thông tin  -->
     <div id="editInformationModal" class="modal">

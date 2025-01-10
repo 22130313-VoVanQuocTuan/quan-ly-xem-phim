@@ -1,11 +1,14 @@
 package hcmuaf.nlu.edu.vn.quanlyxemphim.service;
 
 import hcmuaf.nlu.edu.vn.quanlyxemphim.dao.reservation.ReservationDAO;
+import hcmuaf.nlu.edu.vn.quanlyxemphim.model.Reservations;
 import hcmuaf.nlu.edu.vn.quanlyxemphim.model.Room;
 import hcmuaf.nlu.edu.vn.quanlyxemphim.model.TimeSlot;
 
+import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalTime;
+import java.util.List;
 
 public class ReservationService {
     private final ReservationDAO reservationDAO;
@@ -25,7 +28,14 @@ public class ReservationService {
     public void updateReservationsStatus(int userId) {
         reservationDAO.updateReservationsStatus(userId);
     }
-
+    //     lấy ra đơn hàng
+    public List<Reservations> getAllReservation() throws SQLException {
+        return reservationDAO.getAllReservation();
+    }
+// xóa đơn hàng
+    public boolean deleteReservations(String id) {
+        return reservationDAO.deleteReservations(id);
+    }
 
 
 

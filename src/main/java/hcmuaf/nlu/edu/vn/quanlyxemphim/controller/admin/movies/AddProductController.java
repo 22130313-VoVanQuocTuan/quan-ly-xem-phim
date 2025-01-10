@@ -12,7 +12,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "AddProductController", value = "/add-product")
+@WebServlet(name = "AddProductController", value = "/add-movie")
 public class AddProductController extends HttpServlet {
     private final MovieService movieService = new MovieService();
     private static final String UPLOAD_DIRECTORY = "users/img"; // Đảm bảo rằng thư mục này nằm trong thư mục gốc của frontend
@@ -27,8 +27,6 @@ public class AddProductController extends HttpServlet {
         List<String> errorMessages = new ArrayList<>(); // Danh sách lưu trữ thông báo lỗi
         String imageUrl = ""; // Biến lưu đường dẫn ảnh
         try {
-
-
             // Lấy các tham số từ form
             String title = request.getParameter("title");
             String priceStr = request.getParameter("price");
@@ -49,7 +47,7 @@ public class AddProductController extends HttpServlet {
             // Nếu có lỗi, không tiếp tục thêm sản phẩm
             if (!errorMessages.isEmpty()) {
                 request.setAttribute("errors", errorMessages);
-                request.getRequestDispatcher("/products-list").forward(request, response);
+                request.getRequestDispatcher("/movies-list").forward(request, response);
                 return;
             }
             // Chuyển đổi dữ liệu
@@ -58,7 +56,6 @@ public class AddProductController extends HttpServlet {
 
             // Tạo đối tượng Movie
             Movie movie = new Movie(title, description, genre, img, durationInMinutes, price);
-            // Gọi ProductService để thêm sản phẩm
             boolean isAdded = movieService.addMovies(movie);
 
 //             Gửi thông báo thành công hoặc thất bại
@@ -77,7 +74,7 @@ public class AddProductController extends HttpServlet {
             request.setAttribute("errors", errorMessages);
         }
         // Chuyển hướng về trang sản phẩm
-        request.getRequestDispatcher("/products-list").forward(request, response);
+        request.getRequestDispatcher("/movies-list").forward(request, response);
     }
 
 

@@ -169,16 +169,16 @@
     <div class="navigation">
         <ul>
             <li>
-                <a href="index.html">
+                <a href="home">
                         <span class="icon">
-                            <img src="${pageContext.request.contextPath}/users/img/logo.png" alt="">
+                           <img src="${pageContext.request.contextPath}/users/img/logo.png" alt="">
                         </span>
-                    <span class="title">Bán Vật Liệu Xây Dựng </span>
+                    <span class="title">Movie</span>
                 </a>
             </li>
 
             <li>
-                <a href="index.html">
+                <a href="home">
                         <span class="icon">
                             <ion-icon name="home-outline"></ion-icon>
                         </span>
@@ -196,7 +196,7 @@
             </li>
 
             <li>
-                <a href="products-list">
+                <a href="movies-list">
                         <span class="icon">
                             <ion-icon name="cube-outline"></ion-icon>
                         </span>
@@ -204,29 +204,11 @@
                 </a>
             </li>
             <li>
-                <a href="order">
+                <a href="reservationsLists">
                         <span class="icon">
                             <ion-icon name="receipt-outline"></ion-icon>
                         </span>
                     <span class="title">Hóa đơn</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="promotional-list">
-                        <span class="icon">
-                            <ion-icon name="pricetag-outline"></ion-icon>
-                        </span>
-                    <span class="title">Mã giảm giá</span>
-                </a>
-            </li>
-
-            <li>
-                <a href="category">
-                        <span class="icon">
-                            <ion-icon name="list-outline"></ion-icon>
-                        </span>
-                    <span class="title">Danh mục</span>
                 </a>
             </li>
             <li>
@@ -234,9 +216,10 @@
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
-                    <span class="title">Review</span>
+                    <span class="title">Đánh giá</span>
                 </a>
             </li>
+
             <li>
                 <a href="logout">
                         <span class="icon">
@@ -257,7 +240,9 @@
                 <form action="products-list" method="GET">
                     <label>
                         <input type="text" name="name" placeholder="Tìm kiếm ở đây">
-                        <ion-icon name="search-outline"><button type="submit" style="border: none; background: none; cursor: pointer;"></button></ion-icon>
+                        <ion-icon name="search-outline">
+                            <button type="submit" style="border: none; background: none; cursor: pointer;"></button>
+                        </ion-icon>
                     </label>
                     <input type="hidden" name="search" value="true">
                 </form>
@@ -277,7 +262,7 @@
             <div class="recentOrders">
                 <div class="cardHeader">
                     <h2>Danh sách phim</h2>
-                    <a href="products-list?showAll=true" class="btn">Xem Tất Cả</a>
+                    <a href="movies-list?showAll=true" class="btn">Xem Tất Cả</a>
                 </div>
                 <div class="list-products-content-button">
                     <button id="add-product">Thêm phim</button>
@@ -306,8 +291,11 @@
                             </td>
                             <td><fmt:formatDate value="${movie.createdAt}" pattern="dd-MM-yyyy HH:mm:ss"/></td>
                             <td class="v">
-                                <button type="button"><a style="text-decoration: none; color:black" href="/tqh/edit-product?id=${movie.id}">Sửa</a></button>
-                                <button id="deleteBtn" data-product-id="${movie.id}" data-all="${param.all}">Xóa</button>
+                                <button type="button"><a style="text-decoration: none; color:black"
+                                                         href="/quanlyxemphim_war_exploded/edit-movie?id=${movie.id}">Sửa</a>
+                                </button>
+                                <button id="deleteBtn" data-product-id="${movie.id}" data-all="${param.all}">Xóa
+                                </button>
                             </td>
                         </tr>
                     </c:forEach>
@@ -338,12 +326,12 @@
                 <div id="addProductModal" class="modal">
                     <div class="modal-content">
                         <h3>Thêm phim mới</h3>
-                        <form id="addProductForm" action="add-product" method="post">
-                            <label for="productName">Tên phim:</label>
-                            <input type="text" id="productName" name="title" placeholder="Nhập tên phim">
+                        <form id="addProductForm" action="add-movie" method="post">
+                            <label for="movieName">Tên phim:</label>
+                            <input type="text" id="movieName" name="title" placeholder="Nhập tên phim">
 
-                            <label for="productPrice">Giá vé:</label>
-                            <input type="text" id="productPrice" name="price" placeholder="Nhập giá vé">
+                            <label for="moviePrice">Giá vé:</label>
+                            <input type="text" id="moviePrice" name="price" placeholder="Nhập giá vé">
 
                             <label for="movieGenre">Thể loại:</label>
                             <input type="text" id="movieGenre" name="genre" placeholder="Nhập số thể loại">
@@ -356,7 +344,7 @@
                             <div class="modal-field">
                                 <label for="description">Mô tả:</label>
                                 <textarea id="description" name="description" rows="3"
-                                          placeholder="Nhập mô tả sản phẩm"></textarea>
+                                          placeholder="Nhập mô tả phim"></textarea>
                             </div>
 
                             <label for="posterUrl">Hình ảnh:</label>
@@ -371,37 +359,41 @@
                 <!-- Modal sửa thông tin sản phẩm -->
                 <div id="editProductModal" class="modal">
                     <div class="modal-content">
-                        <h3>Sửa sản phẩm</h3>
-                        <form id="editProductForm" action="${pageContext.request.contextPath}/edit-product" method="post" enctype="multipart/form-data">
-                        <label for="productName">Tên phim:</label>
-                            <input type="text" id="productNameEdit" name="name" value="${movie.name}" placeholder="Nhập tên phim" required>
+                        <h3>Sửa thông tin phim</h3>
+                        <form id="editProductForm" action="${pageContext.request.contextPath}/edit-movie" method="post">
+                            <label for="movieNameEdit">Tên phim:</label>
+                            <input type="text" id="movieNameEdit" name="name" value="${movie.title}"
+                                   placeholder="Nhập tên phim" required>
 
-                            <label for="productPrice">Giá vé:</label>
-                            <input type="text" id="productPriceEdit" name="price"value="${movie.price}" placeholder="Nhập giá vé" required>
+                            <label for="moviePrice">Giá vé:</label>
+                            <input type="text" id="moviePriceEdit" name="price" value="${movie.ticketPrice}"
+                                   placeholder="Nhập giá vé" required>
 
                             <label for="movieGenre">Thể loại:</label>
-                            <input type="text" id="movieGenreEdit" name="movieGenre" placeholder="Nhập thể loại" value="${movie.genre}" required>
+                            <input type="text" id="movieGenreEdit" name="genre" placeholder="Nhập thể loại"
+                                   value="${movie.genre}" required>
 
                             <div class="modal-field">
                                 <label for="duration">Thời lượng phim:</label>
-                                <input type="text" id="nppEdit" name="supplier" placeholder="Nhập thời lượng phim" value="${movie.duration}">
+                                <input type="text" id="durationEdit" name="duration" placeholder="Nhập thời lượng phim"
+                                       value="${movie.duration}">
                             </div>
                             <div class="modal-field">
                                 <label for="description">Mô tả:</label>
                                 <textarea id="descriptionEdit" name="description" rows="3"
-                                          placeholder="Nhập mô tả sản phẩm"> ${movie.description}</textarea>
+                                          placeholder="Nhập mô tả phim">${movie.description}</textarea>
                             </div>
 
-                            <label for="productImage">Hình ảnh:</label>
-                            <input type="file" id="productImageEdit" name="imageUrl" accept="image/*" >
-                            <input type="hidden" name="currentImageUrl" value="${movie.imageUrl}" />
-                            <input type="hidden" name="id" value="${movie.id}" />
-
+                            <label for="posterUrl">Hình ảnh:</label>
+                            <input type="text" id="posterUrlEdit" name="posterUrl" value="${movie.posterUrl}"/>
+                            <input type="hidden" name="currentImageUrl" value="${movie.posterUrl}"/>
+                            <input type="hidden" name="id" value="${movie.id}"/>
                             <button type="submit" id="save-ProductEdit">Lưu thay đổi</button>
                             <button type="button" class="close-modal">Thoát</button>
                         </form>
                     </div>
                 </div>
+
                 <!-- Modal xác nhận xóa -->
                 <div id="deleteModal" class="modal">
                     <div class="modal-content">

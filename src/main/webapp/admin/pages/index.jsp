@@ -22,7 +22,7 @@
                         <span class="icon">
                            <img src="${pageContext.request.contextPath}/users/img/logo.png" alt="">
                         </span>
-                        <span class="title">Bán Vật Liệu Xây Dựng </span>
+                        <span class="title">Movie</span>
                     </a>
                 </li>
 
@@ -45,7 +45,7 @@
                 </li>
 
                 <li>
-                    <a href="products-list">
+                    <a href="movies-list">
                         <span class="icon">
                             <ion-icon name="cube-outline"></ion-icon>
                         </span>
@@ -53,29 +53,11 @@
                     </a>
                 </li>
                 <li>
-                    <a href="order-list">
+                    <a href="reservationsLists">
                         <span class="icon">
                             <ion-icon name="receipt-outline"></ion-icon>
                         </span>
                         <span class="title">Hóa đơn</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="promotional-list">
-                        <span class="icon">
-                            <ion-icon name="pricetag-outline"></ion-icon>
-                        </span>
-                        <span class="title">Mã giảm giá</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="category">
-                        <span class="icon">
-                            <ion-icon name="list-outline"></ion-icon>
-                        </span>
-                        <span class="title">Danh mục</span>
                     </a>
                 </li>
                 <li>
@@ -83,7 +65,7 @@
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
-                        <span class="title">Review</span>
+                        <span class="title">Đánh giá</span>
                     </a>
                 </li>
 
@@ -125,17 +107,6 @@
             <div class="cardBox">
                 <div class="card">
                     <div>
-                        <div class="numbers">${totalViews}</div>
-                        <div class="cardName">Lượt Xem</div>
-                    </div>
-
-                    <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <div>
                         <div class="numbers">${totalUsers}</div>
                         <div class="cardName">Số lượng người dùng</div>
                     </div>
@@ -172,61 +143,32 @@
             <div class="details">
                 <div class="recentOrders">
                     <div class="cardHeader">
-                        <h2>Đơn Hàng Gần Đây</h2>
-                        <a href="home?showAll=orders" class="btn">Xem Tất Cả</a>
+                        <h2>Đơn Đặt Gần Đây</h2>
+                        <a href="home?showAll=reservations" class="btn">Xem Tất Cả</a>
                     </div>
-
                     <table>
                         <thead>
                             <tr>
-                                <td>Mã đơn hàng</td>
-                                <td>Giá</td>
+                                <td>Mã đơn</td>
+                                <td>Tên người đặt</td>
+                                <td>Số điện thoại</td>
                                 <td>Thanh Toán</td>
-                                <td>Ngày đặt hàng</td>
-                                <td>Trạng Thái</td>
                             </tr>
                         </thead>
                         <tbody>
-                        <c:forEach var="view" items="${viewOrder}">
+                        <c:forEach var="reservations" items="${reservationsList}">
                             <tr>
-                                <td>${view.userId}</td>
-                                <td>${view.totalPrice}</td>
-                                <td>${view.paymentStatus}</td>
-                                <td>${view.createdAt}</td>
-                                <td>${view.status}</td>
-<%--                                <td><span class="status delivered">Đã Giao</span></td>--%>
+                                <td>${reservations.id}</td>
+                                <td>${reservations.customerName}</td>
+                                <td>${reservations.customerPhone}</td>
+                                <td>${reservations.status}</td>
                             </tr>
                             </c:forEach>
                         </tbody>
-
-                    </table>
-                </div>
-
-                <!-------------------- Khách Hàng Mới------------------->
-                <div class="recentCustomers">
-                    <div class="cardHeader">
-                        <h2>Khách hàng tiềm năng</h2>
-                        <a href="home?showAll=users" class="btn">Xem Tất Cả</a>
-                    </div>
-                    <table>
-                        <c:forEach var="user" items="${users}">
-                        <tr>
-                            <td width="60px">
-                                <a href="accounts">
-                                    <ion-icon name="person"
-                                        style="color: #1841e4; font-size: 20px; text-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);"></ion-icon>
-                                </a>
-                            </td>
-                            <td>
-                                <h4>${user.fullName}</h4>
-                            </td>
-                        </tr>
-                        </c:forEach>
-
-
                     </table>
                 </div>
             </div>
+
         </div>
     </div>
 

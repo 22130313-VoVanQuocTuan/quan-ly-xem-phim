@@ -45,6 +45,17 @@ public class Movie {
         this.ticketPrice = price;
     }
 
+    public Movie(int movieId, String title, String description, String genre, String img, int durationInMinutes, double price) {
+        this.id = movieId;
+        this.title = title;
+        this.description = description;
+        this.genre = genre;
+        this.posterUrl = img;
+        this.revenue = durationInMinutes;
+        this.duration = durationInMinutes;
+        this.ticketPrice = price;
+    }
+
 
     public void setTicketPrice(Double ticketPrice) {
         this.ticketPrice = ticketPrice;
