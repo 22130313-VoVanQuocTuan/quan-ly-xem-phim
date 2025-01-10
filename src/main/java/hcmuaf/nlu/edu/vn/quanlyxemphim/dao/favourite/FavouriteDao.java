@@ -16,49 +16,68 @@ public class FavouriteDao {
     }
 
 
+    //Thêm phim yêu thích
     public void addToFavorites(long movieId, long userId) {
-        String query = "INSERT INTO Favorites (userId, movieId) VALUES (?, ?)";
+        // Kiểm tra xem phim đã tồn tại trong danh sách yêu thích chưa
+        String checkQuery = "SELECT COUNT(*) FROM Favorites WHERE userId = ? AND movieId = ?";
 
-        try (PreparedStatement stmt = dbConnect.preparedStatement(query)) {
+        try (PreparedStatement checkStmt = dbConnect.preparedStatement(checkQuery)) {
+            checkStmt.setLong(1, userId);
+            checkStmt.setLong(2, movieId);
 
-            stmt.setLong(1, userId);
-            stmt.setLong(2, movieId);
+            // Thực thi truy vấn kiểm tra
+            ResultSet rs = checkStmt.executeQuery();
+            if (rs.next()) {
+                int count = rs.getInt(1);
+                if (count > 0) {
+                    // Nếu phim đã tồn tại, thay thế bằng phim mới (ví dụ, update thông tin phim nếu cần thiết)
+                    String updateQuery = "UPDATE Favorites SET movieId = ? WHERE userId = ?";
 
-            stmt.executeUpdate();
-       // Có thể ném một exception hoặc thông báo lỗi cho người dùng
+                    try (PreparedStatement updateStmt = dbConnect.preparedStatement(updateQuery)) {
+                        updateStmt.setLong(1, movieId);
+                        updateStmt.setLong(2, userId);
+                        updateStmt.executeUpdate();
+                    }
+                    return; // Thoát khỏi phương thức vì đã thực hiện thay thế phim
+                }
+            }
+
+            // Nếu phim chưa có, thêm phim vào danh sách yêu thích
+            String insertQuery = "INSERT INTO Favorites (userId, movieId) VALUES (?, ?)";
+            try (PreparedStatement insertStmt = dbConnect.preparedStatement(insertQuery)) {
+                insertStmt.setLong(1, userId);
+                insertStmt.setLong(2, movieId);
+                insertStmt.executeUpdate();
+            }
+
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Database error: " + e.getMessage(), e);
         }
     }
 
     // Lấy danh sách phim yêu thích của người dùng
     public List<Movie> getFavoritesByUserId(long userId) {
         List<Movie> favoriteMovies = new ArrayList<>();
-        String query = "SELECT m.id, m.title, m.posterUrl " +
-                "FROM Movies m " +
-                "JOIN Favorites f ON m.id = f.movieId " +
+        String query = "SELECT m.id, m.title, m.posterUrl, m.duration " +
+                "FROM `Movies` m " +
+                "JOIN `Favorites` f ON m.id = f.movieId " +
                 "WHERE f.userId = ?";
 
         try (PreparedStatement stmt = dbConnect.preparedStatement(query)) {
-
             stmt.setLong(1, userId);
-
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                // Lấy thông tin bộ phim từ kết quả truy vấn
                 Movie movie = new Movie();
                 movie.setId(rs.getInt("id"));
                 movie.setTitle(rs.getString("title"));
                 movie.setPosterUrl(rs.getString("posterUrl"));
-
-
-                // Thêm bộ phim vào danh sách yêu thích
+                movie.setDuration(rs.getInt("duration"));
                 favoriteMovies.add(movie);
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            // Có thể ném một exception hoặc thông báo lỗi cho người dùng
+            // Thông báo lỗi hoặc xử lý
         }
 
         return favoriteMovies;
@@ -79,6 +98,25 @@ public class FavouriteDao {
             e.printStackTrace();
             return false;
         }
+    }
+
+    // Lấy số lượng phim trong mục yêu thích
+    public int getFavoriteCount(int userId) {
+        String query = "SELECT COUNT(*) AS total FROM Favorites WHERE userId = ?";
+
+        try (PreparedStatement stmt = dbConnect.preparedStatement(query)) {
+
+            stmt.setInt(1, userId);
+
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt("total"); // Trả về tổng số lượng phim
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0; // Trả về 0 nếu có lỗi hoặc không tìm thấy dữ liệu
     }
 }
 

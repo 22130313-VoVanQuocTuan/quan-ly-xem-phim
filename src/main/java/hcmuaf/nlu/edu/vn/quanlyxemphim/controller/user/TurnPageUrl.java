@@ -16,15 +16,7 @@ public class TurnPageUrl extends HttpServlet {
         if ("buyingHelp".equals(action)) {
             req.getRequestDispatcher("/users/page/buying-help.jsp").forward(req, resp);
         }
-        if("termAndService".equals(action)) {
-            req.getRequestDispatcher("/users/page/term_and_services.jsp").forward(req, resp);
-        }
-        if("productUnit".equals(action)) {
-            req.getRequestDispatcher("/users/page/product_unit.jsp").forward(req, resp);
-        }
-        if("introduce".equals(action)) {
-            req.getRequestDispatcher("/users/page/introduce.jsp").forward(req, resp);
-        }
+
         if("resetPass".equals(action)) {
             req.getRequestDispatcher("/users/page/reset-password.jsp").forward(req, resp);
         }

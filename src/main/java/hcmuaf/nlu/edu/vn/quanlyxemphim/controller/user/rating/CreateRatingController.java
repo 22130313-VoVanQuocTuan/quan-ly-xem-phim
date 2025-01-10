@@ -18,23 +18,22 @@ public class CreateRatingController extends HttpServlet {
     try {
 
 
-        int productId = Integer.parseInt(req.getParameter("productId"));
+        int movieId = Integer.parseInt(req.getParameter("movieId"));
         int userId = Integer.parseInt(req.getParameter("userId"));
         String content = req.getParameter("content");
 
-        int categoryId = Integer.parseInt(req.getParameter("categoryId"));
+
 
         RatingService ratingService = new RatingService();
-        Rating rating = new Rating(productId,userId,content);
+        Rating rating = new Rating(movieId,userId,content);
 
         if(ratingService.addRating(rating)){
-            req.setAttribute("productId", productId);
-            req.setAttribute("categoryId", categoryId);
+            req.setAttribute("movieId", movieId);
             req.setAttribute("rating", "Đánh giá thành công");
-            req.getRequestDispatcher( "/product-detail?id=" + productId + "&categoryId=" + categoryId + "&rating=success").forward(req, resp);
+            req.getRequestDispatcher( "/movie-detail?id=" + movieId +"&rating=success").forward(req, resp);
         }else{
             req.setAttribute("rating", "Đánh giá thất bại");
-            req.getRequestDispatcher( "/product-detail?id=" + productId + "&categoryId=" + categoryId + "&rating=fail").forward(req, resp);
+            req.getRequestDispatcher( "/product-detail?id=" + movieId + "&rating=fail").forward(req, resp);
 
         }
 

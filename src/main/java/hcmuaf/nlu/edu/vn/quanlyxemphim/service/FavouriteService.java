@@ -21,7 +21,12 @@ public class FavouriteService {
     public List<Movie> getFavoritesByUserId(long userId) {
         return favouriteDao.getFavoritesByUserId(userId);
     }
+    // Xóa phim ra mục yêu thích
     public boolean removeFavorite(int userId, String movieId) {
         return favouriteDao.removeFavorite(userId, movieId);
+    }
+
+    public int getFavoriteCount(int userId) {
+        return favouriteDao.getFavoriteCount(userId);
     }
 }
