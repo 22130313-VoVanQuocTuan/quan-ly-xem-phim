@@ -171,10 +171,7 @@
                 <p>Nếu bạn có thắc mắc, vui lòng liên hệ với chúng tôi qua:</p>
                 <p>Email: votuan@gmail.com | Số điện thoại: 0909 999 999</p>
             </div>
-
-            <button class="button-check"><a href="product" style="text-decoration: none; color: #fff;">Tiếp tục mua hàng</a></button>
-
-            <button class="button-check"><a href="home-page" style="text-decoration: none; color: #fff;">Quay về Trang Chủ</a></button>
+             <button class="button-check"><a href="home-page" style="text-decoration: none; color: #fff;">Quay về Trang Chủ</a></button>
         </div>
 
     </div>

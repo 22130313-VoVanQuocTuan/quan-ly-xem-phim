@@ -9,7 +9,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebFilter(filterName = "user-filter", urlPatterns = {"/reservation", "/create-rating", "/submitReservation", "/payVNPAY"})
+@WebFilter(filterName = "user-filter", urlPatterns = {"/reservation", "/create-rating", "/submitReservation", "/payVNPAY","/addToFavorites"})
 public class UserFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

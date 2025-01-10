@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
       event.preventDefault(); // Ngăn chặn chuyển hướng mặc định của thẻ <a>
       const session = localStorage.getItem('username'); // Kiểm tra session
       if (session !== null) {
-        window.location.href = "../page/cart.jsp"; // Chuyển hướng đến giỏ hàng
+        window.location.href = "../page/favourite.jsp"; // Chuyển hướng đến giỏ hàng
       } else {
         window.location.href = "../../src/Users/page/login-signup.jsp"; // Chuyển hướng đến trang đăng nhập
       }
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function() {
       event.preventDefault(); // Ngăn chặn chuyển hướng mặc định của thẻ <a>
       const session = localStorage.getItem('username'); // Kiểm tra session
       if (session !== null) {
-        window.location.href = "../page/cart.jsp"; // Chuyển hướng đến giỏ hàng
+        window.location.href = "../page/favourite.jsp"; // Chuyển hướng đến giỏ hàng
       } else {
         window.location.href = "../../src/Users/page/login-signup.jsp"; // Chuyển hướng đến trang đăng nhập
       }

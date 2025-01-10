@@ -56,7 +56,7 @@ public class GetMovieDetailController extends HttpServlet {
             req.setAttribute("timeSlots", timeSlots);
 
             // Forward tới trang hiển thị chi tiết phim
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/users/page/product-detail.jsp");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/users/page/movie-detail.jsp");
             dispatcher.forward(req, resp);
 
         } catch (NumberFormatException e) {

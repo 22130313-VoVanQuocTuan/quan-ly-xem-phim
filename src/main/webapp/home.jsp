@@ -78,7 +78,7 @@
                 <div class="cart">
                     <div class="cart-wrapper">
                         <!-- Giỏ hàng -->
-                        <a href="favorite-items" style="color: #ff0081">
+                        <a href="favorite-items" style="color: #ff0000">
                             <i class="fas fa-heart"></i>
                         </a>
                         <span class="cart-count" id="cart-count">${sessionScope.cartItemCount}</span>
@@ -177,7 +177,7 @@
                         <div class="product-price">
                             <li>Thể loại: ${movie.genre}</li>
                             <li>Thời lượng: ${movie.duration} phút</li>
-                            <a href="add-cart?id=${movie.id}" class="add-to-cart" style="left: calc(6% + 1px);">Thêm vào yêu thích</a>
+                            <a href="addToFavorites?id=${movie.id}" class="add-to-cart" style="left: calc(6% + 1px);">Thêm vào yêu thích</a>
                         </div>
                     </div>
                 </div>

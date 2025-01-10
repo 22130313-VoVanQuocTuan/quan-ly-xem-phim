@@ -23,6 +23,7 @@ public class UserService {
     private final GetListAccountDao getListAccountDao;
     private final UpdateInfoDao updateInfoDao;
     private final AddDeleteUpdateAccountInAdminDao addDeleteUpdateAccountInAdminDao;
+    private  final InfoUserDao infoUserDao;
 
 
     public UserService() {
@@ -36,6 +37,7 @@ public class UserService {
         this.getListAccountDao = new GetListAccountDao();
         this.updateInfoDao = new UpdateInfoDao();
         this.addDeleteUpdateAccountInAdminDao = new AddDeleteUpdateAccountInAdminDao();
+        this.infoUserDao = new InfoUserDao();
 
     }
 
@@ -198,6 +200,9 @@ public class UserService {
     // Lấy danh sách sa phẩm theo tên
     public List<Users> getListUsersByName(String name) {
         return getListAccountDao.getListUserByName(name);
+    }
+    public Users getInfoUser (int id){
+        return infoUserDao.getInfoUser(id);
     }
 }
 

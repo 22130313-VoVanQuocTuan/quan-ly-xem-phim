@@ -29,4 +29,9 @@ public class ReservationController extends HttpServlet {
         // Chuyển hướng đến trang đặt chỗ
         request.getRequestDispatcher("users/page/reservation.jsp").forward(request, response);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
+    }
 }

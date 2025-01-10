@@ -181,6 +181,12 @@
             <!-- Thể hiện ghế đã chọn -->
             <input type="hidden" id="seats" name="seats">
             <input type="hidden" id="total" name="startTime" value="${startTime}">
+
+            <div id="error-message" class="error-message">
+                <c:if test="${not empty error}">
+                    ${error}
+                </c:if>
+            </div>
             <button type="submit">Đặt chỗ</button>
         </form>
     </div>

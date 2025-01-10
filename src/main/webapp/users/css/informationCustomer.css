@@ -14,7 +14,7 @@
     width: 100%;
 
     padding: 35px;
-    background: linear-gradient(to right, #4f3131, #15283e);
+    background: #000000;
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 
@@ -52,7 +52,7 @@
 }
 
 .customer-info {
-    width: 35%;
+    width: 90%;
 }
 
 .recent-orders h2,
@@ -63,68 +63,11 @@
     border: 2px solid #15283e;
     border-radius: 10px;
     padding: 10px;
-    background: linear-gradient(to right, #4f3131, #15283e);
+    background: #104834;
     color: #f1f1f1;
     font-weight: bold;
 }
-.table-container {
-    max-height: 300px; /* Giới hạn chiều cao (300px là ví dụ, có thể chỉnh sửa theo ý muốn) */
-    overflow-y: auto; /* Kích hoạt cuộn dọc khi cần thiết */
-    border: 1px solid #ddd; /* Thêm đường viền để dễ nhìn */
-    margin-top: 10px;
-}
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-
-}
-
-table,
-th,
-td {
-    border: 1px solid #ddd;
-
-}
-
-thead th {
-    background: linear-gradient(to right, #4f3131, #15283e);
-    color: #f1f1f1;
-    font-weight: bold;
-    font-size: 15px;
-
-}
-
-th,
-td {
-    padding: 10px;
-    text-align: left;
-}
-
-th {
-    background-color: #f1f1f1;
-    font-weight: bold;
-    text-align: center;
-}
-
-tbody td {
-    text-align: center;
-    color: #000000;
-    font-size: 15px;
-}
-
-tbody td button {
-    font-size: 13px;
-    padding: 5px;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-tbody td button:hover {
-    background: linear-gradient(to right, #4f3131, #15283e);
-    color: #f1f1f1;
-    font-weight: bold;
-}
 
 .customer-info p {
     display: flex;
@@ -147,7 +90,7 @@ tbody td button:hover {
 }
 
 .customer-info button:hover {
-    background: linear-gradient(to right, #4f3131, #15283e);
+    background: #104834;
     color: #ffffff;
 }
 
@@ -186,7 +129,7 @@ tbody td button:hover {
 }
 
 .modal-content {
-    background:linear-gradient(to right, #4f3131, #15283e);
+    background: #104834;
     color: #ffffff;
     padding: 25px;
     width: 60%; 

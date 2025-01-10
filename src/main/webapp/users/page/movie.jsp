@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vật Liệu Xây Dựng TQH </title>
+    <title>Movie</title>
 </head>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
@@ -59,14 +59,14 @@
             <div class="menu">
                 <!-- Logo bên trái -->
                 <div class="logo">
-                    <a href="home-page"><img src="${pageContext.request.contextPath}/users/img/logo.png" alt="Logo"></a>
+                    <a href="home-page"><img src="https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-cinema-reel-icon-simple-vector-png-image_4849780.png" alt="Logo"></a>
                 </div>
 
                 <!-- Thanh tìm kiếm ở giữa -->
                 <form action="product" method="GET">
                     <div class="search-bar">
                         <input type="hidden" name="search" value="true">
-                        <input name="name" type="text" placeholder="Tìm kiếm sản phẩm...">
+                        <input name="name" type="text" placeholder="Tìm kiếm tên phim...">
                         <button type="submit" title="icon"><i class="fa fa-fw fa-search"></i></button>
                     </div>
                 </form>
@@ -80,11 +80,13 @@
                 </div>
                 <div class="cart">
                     <div class="cart-wrapper">
-                        <a href="cart-items">
-                            <i class="fas fa-shopping-cart"></i>
+                        <!-- Giỏ hàng -->
+                        <a href="favorite-items" style="color: #ff0000">
+                            <i class="fas fa-heart"></i>
                         </a>
                         <span class="cart-count" id="cart-count">${sessionScope.cartItemCount}</span>
                     </div>
+
                 </div>
             </div>
         </div>

@@ -13,41 +13,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4-beta3/css/all.min.css"/>
 <link rel="stylesheet" href="<c:url value="/users/css/home.css"/>">
-<link rel="stylesheet" href="<c:url value="/users/css/confirmation.css"/>">
-<style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+<link rel="stylesheet" href="<c:url value="/users/css/product-detail.css"/>">
 
-    td {
-        padding: 10px;
-        text-align: center;
-    }
 
-    .image-product {
-        width: 100px; /* Điều chỉnh kích thước ảnh nếu cần */
-        height: auto;
-    }
-
-    .save {
-        padding: 4px 20px;
-        margin-top: 10px;
-        background-color: #1c293d;
-        border-radius: 5px;
-        border: none;
-        color: #ffffff;
-        cursor: pointer;
-    }
-
-    .save:hover {
-        background-color: #24a220;
-    }
-
-    .sub .p:hover {
-        color: #f12020;
-    }
-</style>
 <body>
 <div id="section-header1">
     <div class="container">
@@ -58,11 +26,11 @@
                 </p>
             </div>
             <div class="top-right">
-          <span id="user-greeting" style="display: none; color: #ffffff;">
+                <span id="user-greeting" style="display: none; color: #ffffff;">
                            Xin chào,  <span
-                  id="username">${sessionScope.user.username != null ? sessionScope.user.username : ''}</span>!</span>
+                        id="username">${sessionScope.user.username != null ? sessionScope.user.username : ''}</span>!</span>
 
-                <form action="informationCustomer" method="get">
+                <form action="informationCustomer" method="post">
                     <button type="submit" class="account-link" id="signup-link"
                             style="display: none;">
                         <i class="fas fa-user-circle"></i> Tài khoản
@@ -89,7 +57,9 @@
             <div class="menu">
                 <!-- Logo bên trái -->
                 <div class="logo">
-                    <a href="home-page"><img src="https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-cinema-reel-icon-simple-vector-png-image_4849780.png" alt="Logo"></a>
+                    <a href="home-page"><img
+                            src="https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-cinema-reel-icon-simple-vector-png-image_4849780.png"
+                            alt="Logo"></a>
                 </div>
 
                 <!-- Thanh tìm kiếm ở giữa -->
@@ -166,49 +136,65 @@
 </div>
 
 <div id="section-content-1">
-
-    <h2>Thông Tin Đặt Phim</h2>
-
-    <!-- Tên Phim -->
-    <div class="form-group">
-        <label for="movie-name">Tên Phim</label>
-        <input type="text" id="movie-name" name="movie-name" value="${movie.title}" disabled>
-    </div>
-
-    <!-- Số Ghế -->
-    <div class="form-group">
-        <label for="seat-number">Số Ghế</label>
-        <input type="text" id="seat-number" name="seat-number" value="${seats}" disabled>
-    </div>
-
-    <!-- Giờ Chiếu -->
-    <div class="form-group">
-        <label for="showtime">Giờ Chiếu</label>
-        <input type="text" id="showtime" name="showtime" value="${startTime}" disabled>
-    </div>
-
-    <!-- Phòng Chiếu -->
-    <div class="form-group">
-        <label for="room">Phòng Chiếu</label>
-        <input type="text" id="room" name="room"  value="${room.name}" disabled>
-    </div>
-
-    <form action="payVNPAY" method="post">
-        <!-- Giá Vé -->
-        <div class="form-group">
-            <label for="ticket-price">Giá Vé</label>
-            <input type="text" id="ticket-price" name="ticket-price"
-                   value="<fmt:formatNumber value='${movie.ticketPrice}' type='number' /> VNĐ" readonly>
-            <input type="hidden" name="actual-ticket-price" value="${movie.ticketPrice}">
+    <div class="product-details">
+        <!-- Hình ảnh sản phẩm -->
+        <div class="product-image">
+            <img src="${movie.posterUrl}" alt="${movie.title}"/>
+            <div class="review-movie">
+                <div class="review">
+                    <h2>Đánh giá</h2>
+                    <form id="commentform" class="comment-form" action="create-rating" method="post">
+                        <input type="hidden" name="movieId" value="${movie.id}">
+                        <input type="hidden" name="userId" value="${sessionScope.user.id}">
+                        </input>
+                        <textarea name="content" rows="3" placeholder="Ý kiến của bạn..." required></textarea>
+                        <c:if test="${not empty rating}">
+                            <p style="color: red;">${rating}</p> <!-- Hiển thị lỗi nếu có -->
+                        </c:if>
+                        <button type="submit">Gửi</button>
+                    </form>
+                </div>
+            </div>
         </div>
 
-        <!-- Thanh Toán VNPay -->
-        <div class="form-group">
-            <button type="submit" class="btn">Thanh Toán với VNPay</button>
+        <!-- Thông tin sản phẩm -->
+
+        <div class="product-info">
+            <h2 id="title-movie" class="movie-title">Tên Phim: ${movie.title}</h2>
+            <p class="movie-description">
+                ${movie.description}
+            </p>
+            <p><strong>Thể loại: </strong>${movie.genre}</p>
+            <p><strong>Thời lượng: </strong>${movie.duration} phút</p>
+            <p><strong>Ngày phát hành: </strong><fmt:formatDate value="${movie.releaseDate}" pattern="dd/MM/yyyy"/></p>
         </div>
-    </form>
+    </div>
 </div>
 
+
+<div id="section-content-2">
+    <div class="products-similar">
+        <div class="list-similar">
+            <h3>Đặt vé và chọn khung giờ</h3>
+            <c:forEach var="room" items="${rooms}">
+                <div class="room-info">
+                    <h4>Phòng chiếu: ${room.name}</h4>
+                    <div class="time-slots">
+                        <h5>Khung giờ chiếu:</h5>
+                        <c:forEach var="timeSlot" items="${timeSlots}">
+                            <c:if test="${timeSlot.roomId == room.id}">
+                                <a
+                                   href="reservation?roomId=${room.id}&timeSlotId=${timeSlot.id}&movieId=${movie.id}&startTime=${timeSlot.startTime}">
+                                    <button style="cursor: pointer; background-color: #d7ff00;border-radius: 10px;">${timeSlot.startTime}</button>
+                                </a>
+                            </c:if>
+                        </c:forEach>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</div>
 
 <div id="section-footer">
     <div class="container">
@@ -243,28 +229,24 @@
     </div>
     <div>
         <li style="list-style-type: none;"><a href="https://zaloweb.me/" target="_blank" rel="noopener"><i
-                class="fa-solid fa-phone call" style="color: rgb(62, 159, 62);"></i></a></li>
+                class="fa-solid fa-phone call" style="color: #02bc15d1;"></i></a></li>
     </div>
     <div>
-        <li style="list-style-type: none;"><a href="https://www.instagram.com/paq.2012/" target="_blank"
-                                              rel="noopener"><i
+        <li style="list-style-type: none;"><a href="https://www.instagram.com/paq.2012/" target="_blank" rel="noopener"><i
                 class="fab fa-instagram icon" style="color: #f12020;"></i></a></li>
     </div>
     <div id="fb">
         <li style="list-style-type: none;"><a href="https://www.facebook.com/profile.php?id=100044411504061"
                                               target="_blank" rel="noopener"><i
-                class="fa-brands fa-facebook-square icon"
-                style="color: #0911ff;"></i></a></li>
+                class="fa-brands fa-facebook-square icon" style="color: #0911ff;"></i></a></li>
     </div>
     <button id="backToTop" title="Quay về đầu trang">⬆</button>
 
 </div>
 
 
-<script src="<c:url value="/users/js/comfirmation.js"/>"></script>
 <script src="<c:url value="/users/js/login-signup.js"/>"></script>
 <script src="<c:url value="/users/js/scripts.js"/>" defer></script>
-
-
 </body>
+
 </html>

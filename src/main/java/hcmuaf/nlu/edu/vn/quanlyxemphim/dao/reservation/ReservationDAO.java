@@ -2,32 +2,32 @@ package hcmuaf.nlu.edu.vn.quanlyxemphim.dao.reservation;
 
 import hcmuaf.nlu.edu.vn.quanlyxemphim.dao.DBConnect;
 import hcmuaf.nlu.edu.vn.quanlyxemphim.model.Room;
-import hcmuaf.nlu.edu.vn.quanlyxemphim.model.TimeSlot;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 
 public class ReservationDAO {
     private  final DBConnect dbConnect;
     public ReservationDAO() {
         dbConnect = new DBConnect();
     }
-    public boolean createReservation(String roomId, String timeSlotId, int movieId, String customerName, String customerPhone, int seatNumber) {
+    public boolean createReservation(int userId, String roomId, String timeSlotId, int movieId, String customerName, String customerPhone, int seatNumber) {
         // Kết nối cơ sở dữ liệu
-        String query = "INSERT INTO reservations (roomId, timeSlotId, movieId, customerName, customerPhone, seats, status) " +
-                "VALUES (?, ?, ?, ?, ?,?,?)";
+        String query = "INSERT INTO reservations (userId,roomId, timeSlotId, movieId, customerName, customerPhone, seats, status) " +
+                "VALUES (?, ?, ?, ?, ?,?,?, ?)";
 
         try (PreparedStatement preparedStatement = dbConnect.preparedStatement(query)) {
 
             // Thiết lập các tham số cho truy vấn
-            preparedStatement.setString(1, roomId);
-            preparedStatement.setString(2, timeSlotId);
-            preparedStatement.setInt(3, movieId);
-            preparedStatement.setString(4, customerName);
-            preparedStatement.setString(5, customerPhone);
-            preparedStatement.setInt(6, seatNumber); // Số ghế đặt
-            preparedStatement.setString(7, "chưa thanh toán");
+            preparedStatement.setInt(1, userId);
+            preparedStatement.setString(2, roomId);
+            preparedStatement.setString(3, timeSlotId);
+            preparedStatement.setInt(4, movieId);
+            preparedStatement.setString(5, customerName);
+            preparedStatement.setString(6, customerPhone);
+            preparedStatement.setInt(7, seatNumber); // Số ghế đặt
+            preparedStatement.setString(8, "chưa thanh toán");
 
             // Thực thi truy vấn
             int result = preparedStatement.executeUpdate();
@@ -65,19 +65,20 @@ public class ReservationDAO {
     }
 
     //Cập nhật trang thái đặt chỗ khi thanh toán thành công
-    public void updateReservationsStatus(String id, String status) {
+    public void updateReservationsStatus(int userId) {
         // Cập nhật trạng thái đặt chỗ trong cơ sở dữ liệu
-        String updateQuery = "UPDATE reservations SET status = ? WHERE id = ?";
+        String updateQuery = "UPDATE reservations SET status = ? WHERE userId = ?";
 
         try ( PreparedStatement stmt = dbConnect.preparedStatement(updateQuery)) {
-            stmt.setString(1, status);  // "PAID" là trạng thái thành công
-            stmt.setString(2, id);
+            stmt.setString(1, "Đã thanh toán");  // "PAID" là trạng thái thành công
+            stmt.setInt(2, userId);
             stmt.executeUpdate();  // Thực hiện cập nhật
 
             } catch (SQLException e) {
             e.printStackTrace();
         }
     }
+
 
 
 }

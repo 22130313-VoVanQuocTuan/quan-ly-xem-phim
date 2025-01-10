@@ -120,12 +120,12 @@ button:hover {
 
 /* Right content */
 .conten .right {
-   width: 70%;
+   width: 100%;
    display: flex;
    height: auto;
    flex-direction: column;
    align-items: center;
-   margin-left: 15%;
+
 }
 
 .conten .right h1{
@@ -142,7 +142,7 @@ button:hover {
    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
    letter-spacing: 2px;
    text-transform: uppercase;
-   margin-bottom: 40px;
+   margin-bottom: -21px;
 }
 
 /* Right content */
@@ -189,13 +189,12 @@ button:hover {
 
 .conten .right .row img {
    width: 100%;
-   max-width: 127px;
+   max-width: 175px;
    border-radius: 20px;
-   margin-left: 10px;
    transition: transform 0.3s ease;
-   height: 150px;
-   padding: 10px;
-   object-fit: cover;  /* Chỉnh hình ảnh cho phù hợp */
+   height: 189px;
+   padding: 0px;
+   object-fit: cover;
 }
 
 /* Buttons */

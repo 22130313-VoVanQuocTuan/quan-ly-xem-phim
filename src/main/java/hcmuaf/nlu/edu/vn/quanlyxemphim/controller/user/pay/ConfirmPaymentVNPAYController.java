@@ -38,14 +38,12 @@ public class ConfirmPaymentVNPAYController extends HttpServlet {
 
         //lấy id hóa đơn từ session
         HttpSession session = req.getSession();
-        String movieIdStr = (String) session.getAttribute("movieId");
-        ReservationService reservationService = new ReservationService();
-        reservationService.updateReservationsStatus(movieIdStr, "Đã thanh toán");
-        // Chuyển tiếp tới file JSP
-        //Lấy user từ session để gửi email xác nhận thanh toán
         Users user = (Users) session.getAttribute("user");
 
-        req.setAttribute("message", "Thanh toán thành công");
+        ReservationService reservationService = new ReservationService();
+        reservationService.updateReservationsStatus(user.getId());
+        // Chuyển tiếp tới file JSP
+          req.setAttribute("message", "Thanh toán thành công");
         String emailContent = "<html>"
                 + "<body>"
                 + "<h2>Cảm ơn bạn đã đặt vé tại hệ thống đặt vé của chúng tôi!</h2>"

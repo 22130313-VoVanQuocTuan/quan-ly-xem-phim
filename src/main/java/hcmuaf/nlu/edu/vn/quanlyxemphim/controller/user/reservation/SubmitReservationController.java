@@ -1,11 +1,8 @@
 package hcmuaf.nlu.edu.vn.quanlyxemphim.controller.user.reservation;
 
-import hcmuaf.nlu.edu.vn.quanlyxemphim.dao.reservation.ReservationDAO;
 import hcmuaf.nlu.edu.vn.quanlyxemphim.model.Movie;
 import hcmuaf.nlu.edu.vn.quanlyxemphim.model.Room;
-import hcmuaf.nlu.edu.vn.quanlyxemphim.model.TimeSlot;
 import hcmuaf.nlu.edu.vn.quanlyxemphim.model.Users;
-import hcmuaf.nlu.edu.vn.quanlyxemphim.service.EmailUtilService;
 import hcmuaf.nlu.edu.vn.quanlyxemphim.service.MovieService;
 import hcmuaf.nlu.edu.vn.quanlyxemphim.service.ReservationService;
 import jakarta.servlet.ServletException;
@@ -16,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.time.format.DateTimeFormatter;
+
 
 @WebServlet("/submitReservation")
 public class SubmitReservationController extends HttpServlet {
@@ -32,19 +29,17 @@ public class SubmitReservationController extends HttpServlet {
         System.out.println(seat);
         int seatNumber = Integer.parseInt(seat);
 
-
         // Lấy thông tin của phim
         HttpSession session = request.getSession();
         String id = (String) session.getAttribute("movieId");
         int movieId = Integer.parseInt(id);
 
-        // Tạo đối tượng ReservationService để xử lý
         ReservationService reservationService = new ReservationService();
+          Users user = (Users) session.getAttribute("user");
+        // Tạo đối tượng ReservationService để xử lý
+
         // Giả sử bạn có phương thức tạo đặt chỗ trong service
-        reservationService.createReservation(roomId, timeSlotId,movieId, customerName, customerPhone, seatNumber);
-
-
-
+        reservationService.createReservation(user.getId(),roomId, timeSlotId,movieId, customerName, customerPhone, seatNumber);
 
         MovieService movieService = new MovieService();
         Movie movie = movieService.getMoviesById(movieId);
@@ -63,5 +58,11 @@ public class SubmitReservationController extends HttpServlet {
 
         // Chuyển hướng tới trang xác nhận
         request.getRequestDispatcher("users/page/confirmation.jsp").forward(request, response);
+    }
+
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doPost(req, resp);
     }
 }
