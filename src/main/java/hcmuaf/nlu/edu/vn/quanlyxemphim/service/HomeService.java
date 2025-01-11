@@ -26,10 +26,8 @@ public class HomeService {
     }
 
 //    // Tổng doanh thu
-//    public double totalSale() {
-//        return homeDao.totalSale();
-//    }
-
-
+    public double totalSale() {
+        return homeDao.totalSale();
+    }
 
 }

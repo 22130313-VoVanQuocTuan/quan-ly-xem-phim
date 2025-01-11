@@ -16,14 +16,15 @@ import java.io.IOException;
 
 @WebServlet(name = "ConfirmPayment", value = "/confirm-payment")
 public class ConfirmPaymentVNPAYController extends HttpServlet {
-    private  final EmailUtilService emailUtilService = new EmailUtilService();
+    private final EmailUtilService emailUtilService = new EmailUtilService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // Lấy các tham số từ VNPay trả về
         String vnp_TxnRef = req.getParameter("vnp_TxnRef");
         String vnp_ResponseCode = req.getParameter("vnp_ResponseCode");
         String vnp_Amount = req.getParameter("vnp_Amount");
-            // Kiểm tra trạng thái giao dịch
+        // Kiểm tra trạng thái giao dịch
         String message;
         if ("00".equals(vnp_ResponseCode)) {
             message = "Thanh toán thành công! Mã giao dịch: " + vnp_TxnRef;
@@ -42,8 +43,11 @@ public class ConfirmPaymentVNPAYController extends HttpServlet {
 
         ReservationService reservationService = new ReservationService();
         reservationService.updateReservationsStatus(user.getId());
+        String movieId = (String) session.getAttribute("movieId");
+        double ticketPrice = Double.parseDouble(vnp_Amount);
+        reservationService.updateRevenue(movieId, ticketPrice/100);
         // Chuyển tiếp tới file JSP
-          req.setAttribute("message", "Thanh toán thành công");
+        req.setAttribute("message", "Thanh toán thành công");
         String emailContent = "<html>"
                 + "<body>"
                 + "<h2>Cảm ơn bạn đã đặt vé tại hệ thống đặt vé của chúng tôi!</h2>"
@@ -59,11 +63,11 @@ public class ConfirmPaymentVNPAYController extends HttpServlet {
                 + "</body>"
                 + "</html>";
 
-                 // Gửi email xác nhận đến người dùng
-             emailUtilService.sendEmailAsync(user.getEmail(), "Xác nhận thanh toán vé phim", emailContent);
+        // Gửi email xác nhận đến người dùng
+        emailUtilService.sendEmailAsync(user.getEmail(), "Xác nhận thanh toán vé phim", emailContent);
 
-            // Xóa giỏ hàng sau khi thanh toán thành công
-                 session.removeAttribute("movieId");
-                req.getRequestDispatcher("users/page/check-pay.jsp").forward(req, resp);
+        // Xóa giỏ hàng sau khi thanh toán thành công
+        session.removeAttribute("movieId");
+        req.getRequestDispatcher("users/page/check-pay.jsp").forward(req, resp);
     }
 }

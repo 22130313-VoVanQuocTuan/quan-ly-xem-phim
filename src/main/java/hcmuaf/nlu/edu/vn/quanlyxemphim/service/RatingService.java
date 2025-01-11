@@ -2,7 +2,7 @@ package hcmuaf.nlu.edu.vn.quanlyxemphim.service;
 
 
 
-import hcmuaf.nlu.edu.vn.quanlyxemphim.dao.review.RatingDao;
+import hcmuaf.nlu.edu.vn.quanlyxemphim.dao.rating.RatingDao;
 import hcmuaf.nlu.edu.vn.quanlyxemphim.model.Rating;
 
 import java.util.List;

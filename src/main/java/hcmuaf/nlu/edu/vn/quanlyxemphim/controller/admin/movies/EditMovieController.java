@@ -11,7 +11,7 @@ import java.io.IOException;
 
 @MultipartConfig
 @WebServlet(name = "EditProductController ", value = "/edit-movie")
-public class EditProductController extends HttpServlet {
+public class EditMovieController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

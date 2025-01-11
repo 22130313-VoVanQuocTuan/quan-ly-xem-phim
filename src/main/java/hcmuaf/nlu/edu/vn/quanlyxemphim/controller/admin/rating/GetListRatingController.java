@@ -1,4 +1,4 @@
-package hcmuaf.nlu.edu.vn.quanlyxemphim.controller.admin.review;
+package hcmuaf.nlu.edu.vn.quanlyxemphim.controller.admin.rating;
 
 
 import hcmuaf.nlu.edu.vn.quanlyxemphim.model.Rating;
@@ -22,20 +22,20 @@ public class GetListRatingController extends HttpServlet {
         String showAll = req.getParameter("showAll");
         //tìm kiếm
         String search = req.getParameter("search");
-        String productId = req.getParameter("productId");
+        String movieId = req.getParameter("movieId");
 
         try{
             List<Rating> listRating = ratingService.getListRating();
             if(search!=null){
 
-                listRating=ratingService.getListRatingByProductId(productId);
+                listRating=ratingService.getListRatingByProductId(movieId);
             }
             if (showAll == null) {
                 // Hiển thị tối đa 10 mục
                 listRating = listRating.stream().limit(10).collect(Collectors.toList());
             }
             req.setAttribute("listRating", listRating);
-            req.getRequestDispatcher( "/admin/pages/review.jsp").forward(req, resp);
+            req.getRequestDispatcher( "/admin/pages/rating.jsp").forward(req, resp);
         }
         catch (Exception e){
             e.printStackTrace();

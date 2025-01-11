@@ -40,7 +40,7 @@
                 <li>
                     <a href="home">
                         <span class="icon">
-                           <img src="${pageContext.request.contextPath}/users/img/logo.png" alt="">
+                           <img src="https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-cinema-reel-icon-simple-vector-png-image_4849780.png" alt="">
                         </span>
                         <span class="title">Movie</span>
                     </a>
@@ -109,7 +109,7 @@
                 <div class="search">
                     <form action="list-rating" method="GET">
                         <label>
-                            <input type="text" name="productId" placeholder="Tìm kiếm ở đây">
+                            <input type="text" name="movieId" placeholder="Tìm kiếm ở đây">
                             <ion-icon name="search-outline"><button type="submit" style="border: none; background: none; cursor: pointer;"></button></ion-icon>
                         </label>
                         <input type="hidden" name="search" value="true">
@@ -144,7 +144,7 @@
                         <tbody>
                             <c:forEach var="rating" items="${listRating}">
                             <tr>
-                                <td>${rating.productId}</td>
+                                <td>${rating.id}</td>
                                 <td>${rating.userId}</td>
                                 <td>${rating.content}</td>
                                 <td>${rating.createdAt}</td>
@@ -158,14 +158,12 @@
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
             <!-- Modal Xóa đánh giá -->
             <div id="delete-modal" class="modal">
                 <div class="modal-content">
                     <h3>Xác nhận xóa</h3>
-                    <label>Bạn có chắc chắn muốn xóa tài khoản này?</label>
+                    <label>Bạn có chắc chắn muốn xóa đánh giá này?</label>
                     <div class="button-container">
                         <button id="confirm-delete" class="confirm-delete">Xóa</button>
                         <button  class="close-modal">Hủy</button>

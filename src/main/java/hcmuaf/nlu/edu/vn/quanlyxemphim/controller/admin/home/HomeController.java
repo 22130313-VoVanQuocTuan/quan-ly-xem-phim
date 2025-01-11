@@ -39,7 +39,7 @@ public class HomeController extends HttpServlet {
             // Lấy các dữ liệu từ HomeService
             int totalUsers = homeService.totalAccount();
             int totalRatings = homeService.totalRating();
-//            double totalSales = homeService.totalSale();
+            double totalSales = homeService.totalSale();
             if (search != null) {
                 try {
                     int userId = Integer.parseInt(id);
@@ -65,7 +65,7 @@ public class HomeController extends HttpServlet {
             // Đặt các giá trị vào request để chuyển đến JSP
             request.setAttribute("totalUsers", totalUsers);
             request.setAttribute("totalRatings", totalRatings);
-//            request.setAttribute("totalSales", totalSales);
+            request.setAttribute("totalSales", totalSales);
 
             // Forward dữ liệu đến trang JSP để hiển thị
             request.getRequestDispatcher("/admin/pages/index.jsp").forward(request, response);

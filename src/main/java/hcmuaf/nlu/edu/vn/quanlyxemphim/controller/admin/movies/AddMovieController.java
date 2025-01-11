@@ -6,14 +6,12 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
-import java.io.File;
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(name = "AddProductController", value = "/add-movie")
-public class AddProductController extends HttpServlet {
+public class AddMovieController extends HttpServlet {
     private final MovieService movieService = new MovieService();
     private static final String UPLOAD_DIRECTORY = "users/img"; // Đảm bảo rằng thư mục này nằm trong thư mục gốc của frontend
 
