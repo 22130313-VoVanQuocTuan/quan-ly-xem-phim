@@ -53,7 +53,7 @@ td {
 
 .products table thead tr {
   font-weight: bolder;
-  background: linear-gradient(to right, #4f3131, #15283e);
+  background-color: #104834;
   color: var(--white);
   transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
@@ -65,7 +65,7 @@ td {
 
 /* Hiệu ứng hover cho dòng trong bảng */
 .products .recentOrders table tbody tr:hover {
-  background: linear-gradient(to right, #4f3131, #15283e);
+  background-color: #104834;
   color: var(--white);
   transform: translateY(5px);
   transform: translateX(-5px);
@@ -116,7 +116,7 @@ td {
 }
 
 .list-products-content-button a:hover {
-  background: linear-gradient(to right, #4f3131, #15283e);
+  background-color: #104834;
   color: var(--white);
 }
 
@@ -137,7 +137,7 @@ td {
 }
 
 .modal-content {
-  background: linear-gradient(to right, #4f3131, #15283e);
+  background-color: #104834;
   padding: 10px; /* Giảm thêm padding để nội dung gọn */
   border-radius: 10px; /* Bo góc đẹp hơn */
   width: 80%; /* Giảm chiều rộng */
@@ -297,7 +297,7 @@ td {
 }
 
 .close_modal {
-  background: #4f3131;
+  background: #104834;
   color: #ffffff;
   border: 2px solid #ffffff;
   margin-top: 10px;
@@ -309,7 +309,7 @@ td {
 
 .close_modal:hover {
   background: #ffffff;
-  color: #4f3131;
+  color: #104834;
 }
 
 /*----------------- Add Product modal --------------*/
@@ -391,7 +391,7 @@ td {
 }
 
 .close_modal {
-  background: #4f3131;
+  background: #104834;
   color: #ffffff;
   border: 2px solid #ffffff;
   margin-top: 10px;
@@ -403,7 +403,7 @@ td {
 
 .close_modal:hover {
   background: #ffffff;
-  color: #4f3131;
+  color: #104834;
 }
 
 
@@ -486,7 +486,7 @@ td {
 }
 
 .close_modal {
-  background: #4f3131;
+  background: #104834;
   color: #ffffff;
   border: 2px solid #ffffff;
   margin-top: 10px;
@@ -498,7 +498,7 @@ td {
 
 .close_modal:hover {
   background: #ffffff;
-  color: #4f3131;
+  color: #104834;
 }
 
 /* =============== Delete modal =========================== */

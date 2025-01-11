@@ -24,7 +24,7 @@
             <li>
                 <a href="home">
                         <span class="icon">
-                           <img src="${pageContext.request.contextPath}/users/img/logo.png" alt="">
+                           <img src="https://png.pngtree.com/png-vector/20220611/ourmid/pngtree-cinema-reel-icon-simple-vector-png-image_4849780.png" alt="">
                         </span>
                     <span class="title">Movie</span>
                 </a>

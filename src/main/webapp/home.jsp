@@ -153,8 +153,7 @@
     </div>
 </div>
 <div id="section-content">
-    <!-- List Product flash sales -->
-    <div class="product-one-content">
+  a    <div class="product-one-content">
         <div class="product-one-content-title">
             <div class="title">
                 <h3>Phim hot</h3>

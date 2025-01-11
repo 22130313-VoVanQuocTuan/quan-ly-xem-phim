@@ -29,7 +29,7 @@ body {
   position: fixed;
   width: 280px;
   height: 100%;
-  background: linear-gradient(to right, #4f3131, #15283e);
+  background-color: #104834;
   transition: 0.5s;
   overflow: hidden;
 }
@@ -86,7 +86,8 @@ body {
 
 .navigation ul li:hover a,
 .navigation ul li.hovered a {
-  color: #4f3131;
+  color: #104834;
+
 }
 
 .navigation ul li a .icon {
@@ -182,7 +183,7 @@ body {
 }
 
 .list-products-title {
-  background: linear-gradient(to right, #4f3131, #15283e);
+  background-color: #104834;
   height: 50px;
 }
 
@@ -247,7 +248,7 @@ body {
 }
 
 .cardBox .card:hover {
-  background: linear-gradient(to right, #4f3131, #15283e);
+  background-color: #104834;
 }
 
 .cardBox .card:hover .numbers,
@@ -262,7 +263,6 @@ body {
   width: 100%;
   padding: 20px;
   display: grid;
-  grid-template-columns: 2fr 1fr;
   grid-gap: 30px;
 }
 
@@ -284,14 +284,14 @@ body {
 
 .cardHeader h2 {
   font-weight: 600;
-  color: #4f3131;
+  color: #104834;
   font-size: 16px;
 }
 
 .cardHeader .btn {
   position: relative;
   padding: 5px 10px;
-  background: #4f3131;
+  background-color: #104834;
   text-decoration: none;
   color: var(--white);
   border-radius: 6px;
@@ -314,7 +314,7 @@ td {
 
 .details table thead td {
   font-weight: 600px;
-  background: linear-gradient(to right, #4f3131, #15283e);
+  background-color: #104834;
   color: var(--white);
   font-weight: bolder;
 }
@@ -329,7 +329,7 @@ td {
 }
 
 .details .recentOrders table tbody tr:hover {
-  background: linear-gradient(to right, #4f3131, #15283e);
+  background-color: #104834;
   color: var(--white);
 }
 
@@ -426,7 +426,7 @@ td {
 }
 
 .recentCustomers table tr:hover {
-  background: linear-gradient(to right, #4f3131, #15283e);
+  background-color: #104834;
   color: var(--white);
 }
 

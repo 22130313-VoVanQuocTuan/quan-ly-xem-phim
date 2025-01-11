@@ -226,20 +226,7 @@
 
     </div>
 
-    <!-- Modal Hủy đơn hàng -->
-    <div id="cancelOrderModal" class="modal">
-        <div class="modal-content">
-            <h2 class="modal-title">Xác nhận hủy đơn hàng</h2>
-            <p class="titles">Bạn chắc chắn muốn hủy đơn hàng này?</p>
-            <div class="modal-buttons-dele">
-                <form id="cancelOrderForm" method="GET" action="delete-order-infor">
-                    <input type="hidden" id="orderId" name="orderId" value="">
-                    <button type="submit" class="confirm-delete" id="confirmCancelOrderBtn">Hủy đơn hàng</button>
-                </form>
-                <button type="button" class="close-modal-dele" id="closeModalBtn">Đóng</button>
-            </div>
-        </div>
-    </div>
+
 
 
 
@@ -282,9 +269,6 @@
         </div>
     </div>
 </div>
-
-</div>
-
 <div id="section-footer">
     <div class="container">
         <div class="contact-info">

@@ -55,7 +55,7 @@
     background-color: var(--gray); 
     color: var(--white);
     font-weight: bolder;
-    background: linear-gradient(to right, #4f3131, #15283e);
+      background-color: #104834;
       
   }
   
@@ -69,7 +69,7 @@
   }
   
   .review .recentOrders table tbody tr:hover {
-    background: linear-gradient(to right, #4f3131, #15283e);
+      background-color: #104834;
     color: var(--white);
   }
   
@@ -113,8 +113,7 @@ button {
     background-color: rgba(0, 0, 0, 0.4);
   }
   
-  .modal-content {
-    background: linear-gradient(to left, #4f3131, #15283e);
+  .modal-content {background-color: #104834;
     margin: 20% auto;
     padding: 20px;
     border-color: #f88e62;

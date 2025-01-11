@@ -22,8 +22,8 @@ public class EmailUtilService {
     }
 
     public void sendEmail(String to, String subject, String body) throws MessagingException {
-        final String fromEmail = "votuan042004@gmail.com";
-        final String fromPassword = "gcwsmadoeqmijrpn";
+        final String fromEmail = "mailpost102@gmail.com";
+        final String fromPassword = "ygitxreincgpqnbc";
         final String host = "smtp.gmail.com";
 
         Properties properties = new Properties();

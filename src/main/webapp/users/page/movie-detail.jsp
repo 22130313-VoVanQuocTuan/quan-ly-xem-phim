@@ -158,7 +158,6 @@
         </div>
 
         <!-- Thông tin sản phẩm -->
-
         <div class="product-info">
             <h2 id="title-movie" class="movie-title">Tên Phim: ${movie.title}</h2>
             <p class="movie-description">

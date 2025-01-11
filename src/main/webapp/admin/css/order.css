@@ -55,7 +55,7 @@ td {
   background-color: var(--gray);
   color: var(--white);
   font-weight: bolder;
-  background: linear-gradient(to right, #4f3131, #15283e);
+  background-color: #104834;
 
 }
 
@@ -69,7 +69,7 @@ td {
 }
 
 .order .recentOrders table tbody tr:hover {
-  background: linear-gradient(to right, #4f3131, #15283e);
+  background-color: #104834;
   color: var(--white);
 }
 
@@ -119,7 +119,7 @@ td {
 }
 
 .modal-content {
-  background:linear-gradient(to right, #4f3131, #15283e);
+  background-color: #104834;
   color: #ffffff;
   padding: 25px;
   width: 100%;

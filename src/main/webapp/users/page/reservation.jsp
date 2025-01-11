@@ -228,7 +228,7 @@
 
 <script src="<c:url value="/users/js/login-signup.js"/>"></script>
 <script src="<c:url value="/users/js/scripts.js"/>" defer></script>
-<script src="<c:url value="/users/js/cart.js"/>" defer></script>
+<script src="<c:url value="/users/js/favourite.js"/>" defer></script>
 <script>
     // Function để lưu ghế đã chọn vào input khi nhấn vào ghế
     function selectSeat(seatNumber) {

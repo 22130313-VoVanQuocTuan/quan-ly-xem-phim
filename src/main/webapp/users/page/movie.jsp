@@ -138,8 +138,8 @@
     <!--conten_right-->
     <div class="right">
         <h1>Danh sách các bộ phim</h1>
-        <div class="row ps-5" id="product-list">
-            <c:forEach var="movie" items="${movies}">
+        <div class="row ps-5" id="product-list" class="list">
+                <c:forEach var="movie" items="${movies}">
                 <div class="product-one-content-item">
                     <div class="img-product">
                         <a href="movie-detail?id=${movie.id}">
@@ -158,6 +158,7 @@
                     </div>
                 </div>
             </c:forEach>
+
         </div>
         <!-- pagination -->
         <div id="pagination" class="pagination">
@@ -225,7 +226,7 @@
 </div>
 
 <script src="${pageContext.request.contextPath}/users/js/login-signup.js"></script>
-<script src="${pageContext.request.contextPath}/users/js/product.js"></script>
+<script src="${pageContext.request.contextPath}/users/js/movie.js"></script>
 <script src="${pageContext.request.contextPath}/users/js/scripts.js"></script>
 <script src="${pageContext.request.contextPath}/users/js/home.js"></script>
 </body>
