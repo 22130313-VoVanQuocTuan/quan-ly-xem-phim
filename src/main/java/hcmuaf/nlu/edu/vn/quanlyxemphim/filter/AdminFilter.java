@@ -3,6 +3,7 @@ package hcmuaf.nlu.edu.vn.quanlyxemphim.filter;
 import hcmuaf.nlu.edu.vn.quanlyxemphim.model.Users;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -11,8 +12,7 @@ import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebFilter(filterName = "admin-filter", urlPatterns = {"/add-account", "/delete-account", "/accounts", "/status-account",
-"/add-promotional", "/delete-promotional", "/promotional-list", "/update-status-pro","/list-rating" ,"/delete-rating",
-"/category", "/add-delete-category" ,"/add-product","/products-list","/delete-product","/edit-product"})
+        "/add-movie","/delete-movie","/edit-movie","/movies-list","/delete-rating", "/list-rating","/reservationsLists",})
 public class AdminFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {

@@ -1,4 +1,4 @@
-package hcmuaf.nlu.edu.vn.quanlyxemphim.controller.reservations;
+package hcmuaf.nlu.edu.vn.quanlyxemphim.controller.admin.reservations;
 
 import hcmuaf.nlu.edu.vn.quanlyxemphim.model.Reservations;
 import hcmuaf.nlu.edu.vn.quanlyxemphim.service.ReservationService;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @WebServlet(name = "reservationsLists", value = "/reservationsLists")
-public class ReservationsLists extends HttpServlet {
+public class ReservationsListsController extends HttpServlet {
 
     private final ReservationService reservationService = new ReservationService();
 

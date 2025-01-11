@@ -31,7 +31,6 @@ public class HomeDao {
         }
         return 0; // Trả về 0 nếu không có kết quả
     }
-
     // Tổng số nhận xét
     public int totalRating() {
         String sql = "SELECT COUNT(*) FROM ratings";
@@ -47,21 +46,17 @@ public class HomeDao {
     }
 
 //    // Tổng doanh thu
-//    public double totalSale() {
-//        String sql = "SELECT SUM(totalPrice) FROM orders";
-//        try (PreparedStatement stmt = dbConnect.preparedStatement(sql)) {
-//            ResultSet rs = stmt.executeQuery();
-//            if (rs.next()) {
-//                Double total = rs.getDouble(1);
-//                return total != null ? total : 0.0;
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return 0.0; // Trả về 0 nếu không có kết quả
-//    }
-
-
-
-
+    public double totalSale() {
+        String sql = "SELECT SUM(revenue) FROM movies";
+        try (PreparedStatement stmt = dbConnect.preparedStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                Double total = rs.getDouble(1);
+                return total != null ? total : 0.0;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return 0.0; // Trả về 0 nếu không có kết quả
+    }
 }

@@ -93,7 +93,7 @@ public class ReservationDAO {
         try (PreparedStatement stmt = dbConnect.preparedStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
-               Reservations reservation = new Reservations();
+                Reservations reservation = new Reservations();
                 reservation.setId(rs.getInt("id"));  // Lấy id vé
                 reservation.setCustomerName(rs.getString("customerName"));  // Lấy customerName
                 reservation.setCustomerPhone(rs.getString("customerPhone"));  // Lấy customerPhone
@@ -103,6 +103,7 @@ public class ReservationDAO {
         }
         return reservations;
     }
+
     // Xóa phim theo ID
     public boolean deleteReservations(String id) {
         String sql = "DELETE FROM reservations WHERE id = ?";
@@ -117,7 +118,19 @@ public class ReservationDAO {
         return false; // Trả về false nếu có lỗi xảy ra hoặc không có dòng nào bị xóa
     }
 
-
+    // Cập nhật lại doanh thu khi thanh toán
+    public boolean updateRevenue(String movieId, double ticketPrice) {
+        String sql = "UPDATE movies SET revenue = revenue + ? WHERE id = ?";
+        try (PreparedStatement pstmt = dbConnect.preparedStatement(sql)) {
+            pstmt.setDouble(1, ticketPrice); // Giá vé để cộng thêm
+            pstmt.setString(2, movieId);       // ID phim cần cập nhật
+            int rowsUpdated = pstmt.executeUpdate();
+            return rowsUpdated > 0; // Trả về true nếu cập nhật thành công
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 }
 

@@ -21,7 +21,7 @@ public class Movie {
     public Movie() {
     }
 
-    public Movie(int id, String title, String description, String genre, Timestamp releaseDate, String posterUrl, double revenue, int duration, double ticketPrice, Timestamp createdAt,Timestamp updatedAt) {
+    public Movie(int id, String title, String description, String genre, Timestamp releaseDate, String posterUrl, double revenue, int duration, double ticketPrice, Timestamp createdAt, Timestamp updatedAt) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -35,7 +35,7 @@ public class Movie {
         this.updatedAt = updatedAt;
     }
 
-    public Movie(String title, String description, String genre,  String img, int durationInMinutes, double price) {
+    public Movie(String title, String description, String genre, String img, int durationInMinutes, double price) {
         this.title = title;
         this.description = description;
         this.genre = genre;
@@ -54,16 +54,6 @@ public class Movie {
         this.revenue = durationInMinutes;
         this.duration = durationInMinutes;
         this.ticketPrice = price;
-    }
-
-
-    public void setTicketPrice(Double ticketPrice) {
-        this.ticketPrice = ticketPrice;
-    }
-
-
-    public void setRevenue(Double revenue) {
-        this.revenue = revenue;
     }
 
     public int getId() {
@@ -148,6 +138,14 @@ public class Movie {
 
     public Timestamp getUpdatedAt() {
         return updatedAt;
+    }
+
+    public void setTicketPrice(Double ticketPrice) {
+        this.ticketPrice = ticketPrice;
+    }
+
+    public void setRevenue(Double revenue) {
+        this.revenue = revenue;
     }
 
     public void setUpdatedAt(Timestamp updatedAt) {

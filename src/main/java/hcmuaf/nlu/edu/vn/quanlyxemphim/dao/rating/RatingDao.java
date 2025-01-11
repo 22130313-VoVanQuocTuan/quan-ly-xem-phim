@@ -1,4 +1,4 @@
-package hcmuaf.nlu.edu.vn.quanlyxemphim.dao.review;
+package hcmuaf.nlu.edu.vn.quanlyxemphim.dao.rating;
 
 
 

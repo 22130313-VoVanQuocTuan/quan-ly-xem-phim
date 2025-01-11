@@ -10,8 +10,8 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 
 @MultipartConfig
-@WebServlet(name = "EditProductController ", value = "/edit-movie")
-public class EditProductController extends HttpServlet {
+@WebServlet(name = "EditMovieController ", value = "/edit-movie")
+public class EditMovieController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
