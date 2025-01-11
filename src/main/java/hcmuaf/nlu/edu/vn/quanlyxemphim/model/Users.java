@@ -9,6 +9,7 @@ public class Users {
     private String username;
     private String password;
     private String address;
+    private String avatarPath;
     private String phoneNumber;
     private String role;
     private String status;
@@ -32,11 +33,12 @@ public class Users {
         this.phoneNumber = phoneNumber;
         this.address = address;
     }
-    public Users(String fullName,String email, String phoneNumber, String address){
+    public Users(String fullName,String email, String phoneNumber, String address,String avatarPath){
         this.fullName = fullName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.address = address;
+        this.avatarPath = avatarPath;
     }
 
     public Users(int id, String email, String fullName,
@@ -62,6 +64,14 @@ public class Users {
         this.id = id;
         this.fullName = fullName;
         this.totalPrice = totalPrice;
+    }
+
+    public String getAvatarPath() {
+        return avatarPath;
+    }
+
+    public void setAvatarPath(String avatarPath) {
+        this.avatarPath = avatarPath;
     }
 
     public int getId() {

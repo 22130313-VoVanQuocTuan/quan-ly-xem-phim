@@ -18,6 +18,7 @@ public class ConfirmationController extends HttpServlet {
         Users user = (Users) session.getAttribute("user");
         int id = user.getId();
 
+
         UserService userService = new UserService();
         request.setAttribute("info", userService.getInfoUser(id));
 

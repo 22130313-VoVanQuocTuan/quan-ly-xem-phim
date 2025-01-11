@@ -216,6 +216,17 @@
            <!-- Thông tin khách hàng -->
             <div class="customer-info">
                 <h2>Thông tin khách hàng</h2>
+
+                <!--UPLOAD ẢNH-->
+                <div class="avatar-container">
+                    <img src="${info.avatarPath}" alt="Avatar" class="avatar" style="width: 111px;height: 111px; border-radius: 50%;">
+                    <button class="change-avatar-btn" onclick="document.getElementById('avatarInput').click();">
+                        <i class="fa fa-camera"></i>
+                    </button>
+                </div>
+                <form id="avatarForm" action="uploadAvatar" method="post" enctype="multipart/form-data" style="display: none;">
+                    <input type="file" id="avatarInput" name="avatar" accept="image/*" onchange="document.getElementById('avatarForm').submit();">
+                </form>
                 <p><strong>Tên:</strong>${info.fullName}</p>
                 <p><strong>Email:</strong> ${info.email}</p>
                 <p><strong>Số điện thoại:</strong>${info.phoneNumber}</p>

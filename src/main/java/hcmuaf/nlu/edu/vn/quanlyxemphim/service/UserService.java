@@ -197,12 +197,17 @@ public class UserService {
     }
 
 
-    // Lấy danh sách sa phẩm theo tên
+    // Lấy danh sách user theo tên
     public List<Users> getListUsersByName(String name) {
         return getListAccountDao.getListUserByName(name);
     }
     public Users getInfoUser (int id){
         return infoUserDao.getInfoUser(id);
+    }
+
+    // cập nhật avartar
+    public boolean updateAvatar(int userId, String avatarPath) {
+        return infoUserDao.updateAvatar(userId, avatarPath);
     }
 }
 
