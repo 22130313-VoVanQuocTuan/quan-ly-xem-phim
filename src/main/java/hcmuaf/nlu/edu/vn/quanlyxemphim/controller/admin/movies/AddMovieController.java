@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "AddProductController", value = "/add-movie")
+@WebServlet(name = "AddMovieController", value = "/add-movie")
 public class AddMovieController extends HttpServlet {
     private final MovieService movieService = new MovieService();
     private static final String UPLOAD_DIRECTORY = "users/img"; // Đảm bảo rằng thư mục này nằm trong thư mục gốc của frontend

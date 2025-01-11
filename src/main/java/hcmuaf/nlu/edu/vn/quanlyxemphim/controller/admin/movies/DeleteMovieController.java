@@ -7,7 +7,7 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "DeleteProductController", value = "/delete-movie")
+@WebServlet(name = "DeleteMovieController", value = "/delete-movie")
 public class DeleteMovieController extends HttpServlet {
     private final MovieService movieService = new MovieService();
     private static final String UPLOAD_DIRECTORY = "users/img"; // Đảm bảo rằng thư mục này nằm trong thư mục gốc của frontend

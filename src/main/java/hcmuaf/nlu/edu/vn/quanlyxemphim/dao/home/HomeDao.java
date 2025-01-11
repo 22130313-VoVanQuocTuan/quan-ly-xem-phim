@@ -31,7 +31,6 @@ public class HomeDao {
         }
         return 0; // Trả về 0 nếu không có kết quả
     }
-
     // Tổng số nhận xét
     public int totalRating() {
         String sql = "SELECT COUNT(*) FROM ratings";
@@ -60,7 +59,4 @@ public class HomeDao {
         }
         return 0.0; // Trả về 0 nếu không có kết quả
     }
-
-
-
 }
